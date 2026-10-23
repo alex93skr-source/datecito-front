@@ -41,7 +41,6 @@ export function LangGate() {
   useEffect(() => {
     if (!valid) return;
     document.documentElement.lang = lang === 'en' ? 'en' : 'es-MX';
-    document.title = lang === 'en' ? 'Datecito | Meet, connect and go on a date' : 'Datecito | Conoce, conecta y sal en un datecito';
   }, [lang, valid]);
 
   if (!valid) return <Navigate to={`/${preferredLang()}${pathname}${search}${hash}`} replace />;
