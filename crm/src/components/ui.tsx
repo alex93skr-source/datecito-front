@@ -107,6 +107,7 @@ const tones: Record<string, string> = {
   suspended: 'bad', banned: 'bad', rejected: 'bad', cancelled: '', dismissed: '', help: 'bad',
   open: 'coral', admin: 'dark', moderator: 'info', ios: '', android: '', web: '',
   monthly: 'info', yearly: 'coral', like: 'ok', super: 'coral', pass: '',
+  new: 'coral', read: 'info', answered: 'ok', spam: '',
 };
 
 export function Badge({ value, tone, children }: { value?: string | null; tone?: string; children?: ReactNode }) {

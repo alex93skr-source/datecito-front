@@ -20,6 +20,7 @@ import Staff from './pages/Staff';
 import UserDetail from './pages/UserDetail';
 import Users from './pages/Users';
 import Verifications from './pages/Verifications';
+import WebMessages from './pages/WebMessages';
 import { AuthProvider, useAuth } from './store/Auth';
 import './styles.css';
 
@@ -68,6 +69,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="aqui-y-ahora" element={<Here />} />
             <Route path="moderacion/reportes" element={<Reports />} />
             <Route path="moderacion/verificaciones" element={<Verifications />} />
+            <Route path="mensajes" element={<WebMessages />} />
             <Route path="seguridad" element={<SafeSessions />} />
             <Route path="auditoria" element={<Audit />} />
             <Route path="equipo" element={<Staff />} />

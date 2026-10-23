@@ -166,6 +166,24 @@ export type Report = {
   updated_at: string;
 };
 
+export type WebMessage = {
+  id: string;
+  folio: string;
+  kind: 'contact' | 'partners' | 'arco' | 'newsletter' | 'campus';
+  lang: 'es' | 'en';
+  name: string | null;
+  email: string;
+  topic: string | null;
+  company: string | null;
+  city: string | null;
+  message: string | null;
+  has_attachment: boolean;
+  status: 'new' | 'read' | 'answered' | 'spam';
+  handled_by?: UserMini;
+  handled_at: string | null;
+  created_at: string;
+};
+
 export type Connection = {
   id: string;
   source: 'discover' | 'here';
@@ -267,6 +285,7 @@ export type Live = {
   safe_sessions: { active: number; help: number; overdue: number };
   reports_open: number;
   verifications_pending: number;
+  web_messages_new: number;
   today: { signups: number; swipes: number; matches: number; messages: number; datecitos: number; revenue: number };
   recent_events: { id: number; name: string; category: string; platform: Platform | null; status: number | null; user: { id: string; name: string | null } | null; occurred_at: string }[];
 };

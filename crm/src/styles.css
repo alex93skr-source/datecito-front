@@ -354,3 +354,10 @@ table.table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
 .compare .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pager-card { margin-top: 16px; }
 .pager-card .pagination { border-top: 0; }
+
+/* Mensajes del sitio */
+.msg-list { display: flex; flex-direction: column; }
+.msg-row { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--border); padding: 14px 16px; cursor: pointer; color: inherit; font: inherit; }
+.msg-row:last-child { border-bottom: 0; }
+.msg-row:hover { background: var(--hover, rgba(0, 0, 0, 0.03)); }
+.msg-row.unread { box-shadow: inset 3px 0 0 var(--coral, #ff6b6b); }

@@ -29,6 +29,7 @@ import type {
   UserNote,
   UserSummary,
   Verification,
+  WebMessage,
 } from './types';
 
 export * from './client';
@@ -91,6 +92,12 @@ export const moderation = {
     request<Data<Report>>(`/admin/reports/${id}`, { method: 'PATCH', body: { status, resolution_note } }).then((r) => r.data),
   verifications: (query: Query) => request<Paginated<Verification>>('/admin/verifications', { query }),
   review: (id: string, approve: boolean) => request<void>(`/admin/verifications/${id}`, { method: 'POST', body: { approve } }),
+};
+
+export const web = {
+  messages: (query: Query) => request<Paginated<WebMessage>>('/admin/web-messages', { query }),
+  update: (id: string, status: WebMessage['status']) => request<Data<WebMessage>>(`/admin/web-messages/${id}`, { method: 'PATCH', body: { status } }).then((r) => r.data),
+  attachment: (id: string) => request<{ url: string }>(`/admin/web-messages/${id}/attachment`),
 };
 
 export const community = {

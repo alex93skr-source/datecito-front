@@ -39,6 +39,7 @@ export function Layout() {
       items: [
         { to: '/moderacion/reportes', label: 'Reportes', icon: '⚑', badge: live.data?.reports_open },
         { to: '/moderacion/verificaciones', label: 'Verificaciones', icon: '✓', badge: live.data?.verifications_pending },
+        { to: '/mensajes', label: 'Mensajes del sitio', icon: '✉', badge: live.data?.web_messages_new },
         { to: '/seguridad', label: 'Datecito Seguro', icon: '⛨', badge: live.data ? live.data.safe_sessions.help + live.data.safe_sessions.overdue : undefined },
       ],
     },

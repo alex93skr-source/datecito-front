@@ -84,6 +84,15 @@ export const labels: Record<string, string> = {
   naturaleza: 'Naturaleza',
   cultura: 'Cultura',
   otro: 'Otro',
+  new: 'Nuevo',
+  read: 'Leído',
+  answered: 'Atendido',
+  spam: 'Spam',
+  contact: 'Contacto',
+  partners: 'Alianzas',
+  arco: 'ARCO',
+  newsletter: 'Boletín',
+  campus: 'Lista de espera',
 };
 
 export const label = (key: string | null | undefined) => (key ? (labels[key] ?? key) : '—');
@@ -129,6 +138,9 @@ export const actionLabels: Record<string, string> = {
   'note.created': 'Agregó una nota',
   'note.deleted': 'Borró una nota',
   'report.updated': 'Actualizó un reporte',
+  'web_message.read': 'Leyó un mensaje del sitio',
+  'web_message.answered': 'Atendió un mensaje del sitio',
+  'web_message.spam': 'Marcó un mensaje del sitio como spam',
   'verification.approved': 'Aprobó verificación',
   'verification.rejected': 'Rechazó verificación',
   'messages.viewed': 'Leyó una conversación',
