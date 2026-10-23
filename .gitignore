@@ -46,3 +46,6 @@ yarn-error.*
 # Local
 /tmp/
 /.claude/
+
+# APKs compilados localmente
+builds/
