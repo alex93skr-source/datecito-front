@@ -119,10 +119,11 @@ p { margin: 0 0 1em; }
   .mobile-nav details { border-bottom: 1px solid var(--border); }
   .mobile-nav summary { list-style: none; padding: 16px 0; font-weight: 800; color: var(--verde); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer; }
   .mobile-nav summary::-webkit-details-marker { display: none; }
-  .mobile-nav details a, .mobile-nav > a { display: block; padding: 10px 0; text-decoration: none; color: var(--text); font-weight: 600; }
-  .mobile-nav > a { padding: 16px 0; font-weight: 800; color: var(--verde); font-size: 1.1rem; border-bottom: 1px solid var(--border); }
+  .mobile-nav details a, .mobile-nav > a:not(.btn) { display: block; padding: 10px 0; text-decoration: none; color: var(--text); font-weight: 600; }
+  .mobile-nav > a:not(.btn) { padding: 16px 0; font-weight: 800; color: var(--verde); font-size: 1.1rem; border-bottom: 1px solid var(--border); }
   .mobile-nav details > div { padding-bottom: 10px; }
-  .mobile-nav .btn { margin-top: 20px; }
+  .mobile-nav .btn { margin-top: 20px; display: inline-flex; justify-content: center; }
+  .mobile-nav .lang-btn { margin-top: 10px; background: var(--surface-alt); color: var(--verde); }
 }
 
 /* Hero */
