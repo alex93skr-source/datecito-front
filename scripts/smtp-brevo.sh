@@ -11,10 +11,26 @@ SSH=(ssh -i "$HOME/.ssh/datecito_vps" -o BatchMode=yes "root@$SERVER_IP")
 REMOTE_ENV="/srv/datecito/backend/.env"
 
 echo "Datos de Brevo › SMTP y API › pestaña SMTP"
-read -r -p "Usuario SMTP (login, suele ser un correo o terminar en @smtp-brevo.com): " SMTP_USER
-read -r -s -p "Clave SMTP (no se muestra al escribir): " SMTP_PASS; echo
+echo "  • Usuario = el campo \"Login\" de esa pantalla (un correo o algo terminado en @smtp-brevo.com)."
+echo "  • Clave   = la clave generada, que empieza con xsmtpsib-"
+echo
+# Descarta teclas que hayan quedado pendientes antes de empezar a preguntar.
+while read -r -t 0.2 -n 1000 _; do :; done
+read -r -p "Usuario SMTP (Login): " SMTP_USER
+SMTP_USER="${SMTP_USER//[[:space:]]/}"
+case "$SMTP_USER" in
+  xsmtpsib-*) echo "Eso es la CLAVE, no el usuario. El usuario es el campo Login de Brevo."; exit 1 ;;
+  *@*|*smtp-brevo.com) ;;
+  *) echo "El usuario no parece un login de Brevo (debe ser un correo o terminar en @smtp-brevo.com)."; exit 1 ;;
+esac
+read -r -s -p "Clave SMTP (no se muestra al escribir; pégala y da Enter): " SMTP_PASS; echo
+SMTP_PASS="${SMTP_PASS//[[:space:]]/}"
+case "$SMTP_PASS" in
+  xsmtpsib-*) ;;
+  *) echo "La clave debe empezar con xsmtpsib-. Genera una nueva en Brevo y vuelve a correr el script."; exit 1 ;;
+esac
 read -r -p "Correo donde quieres recibir la prueba: " TEST_TO
-[ -n "$SMTP_USER" ] && [ -n "$SMTP_PASS" ] && [ -n "$TEST_TO" ] || { echo "Faltan datos."; exit 1; }
+[ -n "$TEST_TO" ] || { echo "Falta el correo de prueba."; exit 1; }
 
 echo "Guardando en el servidor…"
 printf '%s\n%s\n' "$SMTP_USER" "$SMTP_PASS" | "${SSH[@]}" "
