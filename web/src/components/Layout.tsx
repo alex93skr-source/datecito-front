@@ -193,8 +193,8 @@ function Footer() {
         </div>
         <p className="footer-seo">
           {t(
-            'Únete a la comunidad de Datecito para conocer gente nueva, hacer match y salir a un datecito de verdad. Con verificación por selfie, Datecito Seguro y contactos de confianza, conocer personas es más fácil y más tranquilo. Disponible en Ciudad de México, Guadalajara, Monterrey, Puebla, Querétaro, Mérida y todo México.',
-            'Join the Datecito community to meet new people, match and go on a real date. With selfie verification, Datecito Safe and trusted contacts, meeting people is easier and more relaxed. Available in Mexico City, Guadalajara, Monterrey, Puebla, Querétaro, Mérida and across Mexico.',
+            'Datecito es la app de citas mexicana donde todos los perfiles pasan por verificación con selfie. Conoce gente nueva cerca de ti, haz match, platica sin presión y sal a un datecito de verdad con Datecito Seguro y tus contactos de confianza. Empezamos en el área metropolitana de la Ciudad de México y crecemos a todo México.',
+            'Datecito is the Mexican dating app where every profile goes through selfie verification. Meet new people near you, match, chat without pressure and go on a real date with Datecito Safe and your trusted contacts. We’re starting in the Mexico City metro area and growing across Mexico.',
           )}
         </p>
         <div className="footer-bottom">
@@ -244,8 +244,8 @@ function CookieBanner() {
     <div className="cookie" role="region" aria-label={t('Aviso de cookies', 'Cookie notice')}>
       <p>
         {t(
-          'Usamos cookies necesarias para que el sitio funcione y, con tu permiso, cookies de analítica, personalización y publicidad para mejorar tu experiencia. Puedes cambiar tu decisión cuando quieras en ',
-          'We use cookies that are necessary for the site to work and, with your permission, analytics, personalization and advertising cookies to improve your experience. You can change your choice at any time in ',
+          'Este sitio sólo usa almacenamiento necesario (idioma y tu decisión sobre cookies). Si algún día añadimos analítica o publicidad, sólo se activarán con tu permiso; puedes cambiar tu decisión cuando quieras en ',
+          'This site only uses necessary storage (your language and your cookie choice). If we ever add analytics or advertising, they will only run with your permission; you can change your choice at any time in ',
         )}
         <strong>{t('Configuración de cookies', 'Cookie settings')}</strong>. {t('Más información en nuestra', 'Learn more in our')}{' '}
         <Link to="/legal/cookies" className="link">

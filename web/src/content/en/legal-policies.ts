@@ -81,7 +81,7 @@ export const autoridades: LegalDoc = {
       h: '2. How to submit a request',
       blocks: [
         'Send the signed official letter in PDF to ' + e.authorities + ' or to our address: ' + company.addressEn + '. The request must include:',
-        { ul: ['Requesting authority, letter number and investigation or case file number.', 'Legal basis.', 'Account identifiers: phone number, email or user ID (a name alone is not enough).', 'Specific information requested and time period.', 'Contact details of the responsible official.'] },
+        { ul: ['Requesting authority, letter number and investigation or case file number.', 'Legal basis.', 'Account identifiers: email or user ID (a name alone is not enough).', 'Specific information requested and time period.', 'Contact details of the responsible official.'] },
       ],
     },
     {
@@ -92,7 +92,7 @@ export const autoridades: LegalDoc = {
     {
       id: 'conservacion',
       h: '4. Preservation requests',
-      blocks: ['We can preserve an account’s information for [90] days while the formal request is obtained, upon official request.'],
+      blocks: ['We can preserve an account’s information for 90 days while the formal request is obtained, upon official request.'],
     },
     {
       id: 'notificacion',
@@ -106,12 +106,12 @@ export const accesibilidad: LegalDoc = {
   slug: 'accesibilidad',
   title: 'Accessibility Statement',
   summary: 'Our commitment to making Datecito usable by everyone.',
-  intro: ['We want Datecito to be for everyone. We work to make the app and this site accessible in line with the Web Content Accessibility Guidelines (WCAG) 2.2, level AA.'],
+  intro: ['We want Datecito to be for everyone. We work to make the app and this site accessible using the Web Content Accessibility Guidelines (WCAG) 2.2, level AA, as our reference. We are a small team and keep improving.'],
   sections: [
     {
       id: 'medidas',
       h: 'What we do',
-      blocks: [{ ul: ['Sufficient color contrast in text and buttons.', 'Full keyboard navigation with visible focus.', 'Accessible labels on icons and controls for screen readers (VoiceOver and TalkBack).', 'Text that adapts to the system font size.', 'Haptic and text feedback, not just color.', 'Testing with users with disabilities.'] }],
+      blocks: [{ ul: ['Sufficient color contrast in text and buttons.', 'Full keyboard navigation with visible focus.', 'Accessible labels on icons and controls for screen readers (VoiceOver and TalkBack).', 'Text that adapts to the system font size.', 'Haptic and text feedback, not just color.', 'Manual review with screen readers.'] }],
     },
     {
       id: 'limitaciones',
@@ -148,7 +148,7 @@ export const seguridadInformatica: LegalDoc = {
     {
       id: 'compromiso',
       h: '3. Our commitment',
-      blocks: ['We will acknowledge receipt within 3 business days, keep you informed and, if you acted in good faith under this policy, we will not take legal action against you. We will credit you in our hall of fame if you wish.'],
+      blocks: ['We will acknowledge receipt within 3 business days, keep you posted and, if you acted in good faith under this policy, we will not take legal action against you. If you wish, we will credit you publicly.'],
     },
     {
       id: 'alcance',

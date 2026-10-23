@@ -1,9 +1,11 @@
 import { Link, useT } from '../i18n';
+import { Seo } from '../seo';
 
 export default function NotFound() {
   const t = useT();
   return (
     <section className="not-found">
+      <Seo title={t('Página no encontrada', 'Page not found')} noindex />
       <div>
         <div className="big">404</div>
         <h1 style={{ fontSize: '2rem' }}>{t('Este datecito se canceló', 'This date got cancelled')}</h1>

@@ -2,14 +2,34 @@ import { Icon } from '../components/Icon';
 import { CtaBand, Faq, FeatureCard, PhoneChat, PhoneSafety, PhoneSwipe, SectionHead, StoreButtons } from '../components/ui';
 import { useContent } from '../content';
 import { Link, useT } from '../i18n';
+import { Seo } from '../seo';
 import { company, money } from '../site';
 
 export default function Home() {
   const t = useT();
-  const { posts, stories } = useContent();
+  const { posts } = useContent();
   const p = company.pricing;
   return (
     <>
+      <Seo
+        title={t('Datecito | Conoce personas reales y sal en un datecito', 'Datecito | Meet real people and go on a date')}
+        description={t(
+          'La app de citas mexicana donde todos los perfiles pasan por verificación con selfie. Conoce personas cerca de ti, platica, propón un datecito y sal con Datecito Seguro. Gratis durante el lanzamiento.',
+          'The Mexican dating app where every profile goes through selfie verification. Meet people near you, chat, propose a date and go out with Datecito Safe. Free during launch.',
+        )}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'MobileApplication',
+            name: 'Datecito',
+            operatingSystem: 'Android, iOS',
+            applicationCategory: 'LifestyleApplication',
+            description: t('App de citas con verificación por selfie, datecitos con calendario y Datecito Seguro.', 'Dating app with selfie verification, calendar-based dates and Datecito Safe.'),
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'MXN', description: t('Gratis durante el lanzamiento', 'Free during launch') },
+            url: 'https://datecito.com',
+          },
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" style={{ backgroundImage: 'url(/welcome.jpg)' }} />
         <div className="container">
@@ -19,17 +39,17 @@ export default function Home() {
           <h1>
             {t(
               <>
-                Del match al <em>datecito</em>, sin tanta vuelta.
+                Aquí todos son <em>reales</em>. Del match al datecito.
               </>,
               <>
-                From match to <em>date</em>, no runaround.
+                Everyone here is <em>real</em>. From match to date.
               </>,
             )}
           </h1>
           <p>
             {t(
-              'Conoce personas reales cerca de ti, platica y conviértelo en un plan. Con verificación por selfie y Datecito Seguro en cada cita.',
-              'Meet real people near you, chat and turn it into a plan. With selfie verification and Datecito Safe on every date.',
+              'Conoce personas cerca de ti con perfiles verificados por selfie, platica sin presión y conviértelo en un plan con día, hora y Datecito Seguro.',
+              'Meet people near you with selfie-verified profiles, chat without pressure and turn it into a plan with a day, a time and Datecito Safe.',
             )}
           </p>
           <div className="btn-row">
@@ -50,15 +70,25 @@ export default function Home() {
           <div className="grid g3 steps">
             <div className="card step">
               <h3>{t('Descubre', 'Discover')}</h3>
-              <p className="muted">{t('Desliza perfiles verificados cerca de ti y filtra por lo que de verdad te importa con “Prefiero” o “Sólo”.', 'Swipe verified profiles near you and filter by what really matters with “Prefer” or “Only”.')}</p>
+              <p className="muted">
+                {t(
+                  'Cada día recibes un grupo de personas cerca de ti. Filtra por edad, distancia, intención e intereses, y da like con calma: tienes 30 al día.',
+                  'Every day you get a group of people near you. Filter by age, distance, intention and interests, and like at your own pace: you get 30 a day.',
+                )}
+              </p>
             </div>
             <div className="card step">
               <h3>{t('Haz match y platica', 'Match and chat')}</h3>
-              <p className="muted">{t('Cuando el like es mutuo, abren chat. Tú decides quién puede escribirte y cuándo.', 'When the like is mutual, you can chat. You decide who can message you and when.')}</p>
+              <p className="muted">
+                {t(
+                  'Cuando el like es mutuo, abren chat. Sin “visto”, sin “en línea” y sin presión: tú marcas el ritmo.',
+                  'When the like is mutual, you can chat. No read receipts, no “online” status and no pressure: you set the pace.',
+                )}
+              </p>
             </div>
             <div className="card step">
               <h3>{t('Propón un datecito', 'Propose a date')}</h3>
-              <p className="muted">{t('Elige plan, lugar y hora en un toque. Activa Datecito Seguro y disfruta.', 'Pick the plan, place and time in one tap. Turn on Datecito Safe and enjoy.')}</p>
+              <p className="muted">{t('Elige plan, lugar, día y hora en el calendario. Activa Datecito Seguro y disfruta.', 'Pick the plan, place, day and time on the calendar. Turn on Datecito Safe and enjoy.')}</p>
             </div>
           </div>
         </div>
@@ -71,14 +101,14 @@ export default function Home() {
             <h2>{t('Gente real, cerca de ti', 'Real people, near you')}</h2>
             <p className="lead">
               {t(
-                'Perfiles con selfie verificada, distancia aproximada y los intereses que tienen en común. Da like, Super like o pasa: sin presión.',
-                'Profiles with verified selfies, approximate distance and the interests you share. Like, Super Like or pass: no pressure.',
+                'Perfiles con selfie verificada por una persona del equipo, distancia aproximada y lo que tienen en común: intereses, música y hasta el equipo al que le van.',
+                'Profiles with a selfie verified by a real team member, approximate distance and what you share: interests, music and even the team you root for.',
               )}
             </p>
             <ul className="checklist">
               <li>{t('Insignia de verificación por selfie', 'Selfie verification badge')}</li>
-              <li>{t('Filtros de edad, distancia e intereses', 'Age, distance and interest filters')}</li>
-              <li>{t('Super likes para destacar', 'Super Likes to stand out')}</li>
+              <li>{t('Filtros de edad, distancia, intención e intereses', 'Age, distance, intention and interest filters')}</li>
+              <li>{t('Super likes para destacar y “Quién te dio like”', 'Super Likes to stand out and “Who liked you”')}</li>
             </ul>
             <Link to="/funciones" className="btn btn-dark">
               {t('Ver todas las funciones', 'See all features')}
@@ -95,8 +125,8 @@ export default function Home() {
             <h2>{t('Proponer un plan es parte de la plática', 'Proposing a plan is part of the chat')}</h2>
             <p className="lead">
               {t(
-                'Desde el chat eliges tipo de plan, lugar, día y hora. Tu match acepta, sugiere otro horario o declina. Así de simple.',
-                'From the chat you pick the kind of plan, place, day and time. Your match accepts, suggests another time or declines. That simple.',
+                'Desde el chat eliges tipo de plan, lugar, día y hora en un calendario. Tu match confirma y el datecito queda agendado para ambos.',
+                'From the chat you pick the kind of plan, place, day and time on a calendar. Your match confirms and the date is on both your schedules.',
               )}
             </p>
             <Link to="/datecitos" className="btn btn-dark">
@@ -114,8 +144,8 @@ export default function Home() {
             <h2>{t('Tu seguridad viene incluida', 'Your safety comes included')}</h2>
             <p className="lead">
               {t(
-                'Comparte tu plan con contactos de confianza, recibe check-ins, ten a la mano una llamada de salida y el 911 a un toque.',
-                'Share your plan with trusted contacts, get check-ins, keep an exit call handy and 911 one tap away.',
+                'Avisa a tus contactos de confianza por WhatsApp con un toque, recibe un “¿todo bien?” cada 15, 30, 45 o 60 minutos y ten a la mano una llamada de salida y el botón de ayuda.',
+                'Let your trusted contacts know on WhatsApp in one tap, get an “all good?” check-in every 15, 30, 45 or 60 minutes, and keep an exit call and the help button handy.',
               )}
             </p>
             <div className="btn-row">
@@ -136,48 +166,23 @@ export default function Home() {
           <SectionHead eyebrow={t('Todo en una app', 'All in one app')} title={t('Pensado para conocer gente de verdad', 'Built for actually meeting people')} />
           <div className="grid g3">
             <FeatureCard icon="radio" title={t('Aquí y ahora', 'Here & Now')} to="/aqui-y-ahora">
-              {t('Encuentra personas cerca que también quieren salir hoy. Disponibilidad por 1, 2 o 3 horas.', 'Find people nearby who also want to go out today. Availability for 1, 2 or 3 hours.')}
+              {t('¿Estás en un café o en un bar? Descubre quién más está en el mismo lugar con ganas de conocer gente.', 'At a café or a bar? See who else is in the same place and up for meeting people.')}
             </FeatureCard>
             <FeatureCard icon="shield" title={t('Verificación', 'Verification')} to="/verificacion">
-              {t('Una selfie confirma que tus fotos son tuyas. Elige hablar sólo con perfiles verificados.', 'A selfie confirms your photos are yours. Choose to talk only with verified profiles.')}
+              {t('Una selfie con una pose al azar, revisada por una persona, confirma que tus fotos son tuyas. Filtra para ver sólo perfiles verificados.', 'A selfie with a random pose, reviewed by a real person, confirms your photos are yours. Filter to see only verified profiles.')}
             </FeatureCard>
-            <FeatureCard icon="bolt" title={t('Super likes y Boost', 'Super Likes & Boost')} to="/super-likes-y-boost">
-              {t('Destaca con un Super like o aparece primero en tu zona durante 30 minutos.', 'Stand out with a Super Like or show up first in your area for 30 minutes.')}
+            <FeatureCard icon="heart-fill" title={t('Quién te dio like', 'Who liked you')} to="/membresia">
+              {t('Ve cuántas personas te dieron like y, con membresía, quiénes son: dales like de vuelta y hay match al instante.', 'See how many people liked you and, with a membership, who they are: like them back and it’s an instant match.')}
             </FeatureCard>
-            <FeatureCard icon="filter" title={t('Filtros “Prefiero” y “Sólo”', '“Prefer” and “Only” filters')} to="/funciones#filtros">
-              {t('Prioriza lo que te gusta sin cerrarte a sorpresas, o filtra estrictamente.', 'Prioritize what you like without ruling out surprises, or filter strictly.')}
+            <FeatureCard icon="bolt" title={t('Super likes', 'Super Likes')} to="/super-likes">
+              {t('Dile a alguien que de verdad te interesa: tu perfil le aparece primero y destacado. Uno gratis cada 3 días.', 'Tell someone you’re really interested: your profile shows up first and highlighted. One free every 3 days.')}
+            </FeatureCard>
+            <FeatureCard icon="filter" title={t('Un ritmo sano', 'A healthy pace')} to="/funciones#ritmo">
+              {t('30 likes y 40 perfiles al día para decidir con intención, y una segunda oportunidad para quien pasaste de largo.', '30 likes and 40 profiles a day to decide with intention, plus a second chance for anyone you passed on.')}
             </FeatureCard>
             <FeatureCard icon="lock" title={t('Tú tienes el control', 'You’re in control')} to="/legal/privacidad">
-              {t('Nunca mostramos tu ubicación exacta. Elige quién te escribe primero.', 'We never show your exact location. Choose who messages you first.')}
+              {t('Nunca mostramos tu ubicación exacta, no hay “visto” ni “en línea”, y bloquear o reportar toma dos toques.', 'We never show your exact location, there’s no “seen” or “online”, and blocking or reporting takes two taps.')}
             </FeatureCard>
-            <FeatureCard icon="graduation" title="Datecito U" to="/universitarios">
-              {t('Conecta con personas de tu universidad y alrededores.', 'Connect with people from your college and nearby.')}
-            </FeatureCard>
-          </div>
-        </div>
-      </section>
-
-      <section className="section peach">
-        <div className="container">
-          <SectionHead eyebrow={t('Historias', 'Stories')} title={t('Empezó con un datecito', 'It started with a date')} lead={t('Historias ilustrativas inspiradas en nuestra comunidad beta.', 'Illustrative stories inspired by our beta community.')} />
-          <div className="grid g3">
-            {stories.slice(0, 3).map((s) => (
-              <blockquote className="card quote" key={s.names} style={{ margin: 0 }}>
-                “{s.text}”
-                <footer>
-                  <div className="avatar">{s.initials}</div>
-                  <div>
-                    {s.names}
-                    <span>{s.city}</span>
-                  </div>
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-          <div className="center" style={{ marginTop: 32 }}>
-            <Link to="/historias" className="link">
-              {t('Ver más historias →', 'See more stories →')}
-            </Link>
           </div>
         </div>
       </section>
@@ -189,8 +194,8 @@ export default function Home() {
             <h2>{t('Una sola membresía, todo incluido', 'One membership, everything included')}</h2>
             <p className="lead">
               {t(
-                `Gratis durante el lanzamiento. Después: ${money(p.monthly)} al mes o ${money(p.yearly)} al año, con 1 Boost cada semana.`,
-                `Free during launch. After that: ${money(p.monthly)} a month or ${money(p.yearly)} a year, with 1 Boost every week.`,
+                `Gratis durante el lanzamiento. Después: ${money(p.monthly)} al mes o ${money(p.yearly)} al año (dos meses gratis). Te avisaremos antes de empezar a cobrar.`,
+                `Free during launch. After that: ${money(p.monthly)} a month or ${money(p.yearly)} a year (two months free). We’ll let you know before we start charging.`,
               )}
             </p>
             <Link to="/membresia" className="btn btn-primary">
@@ -199,12 +204,11 @@ export default function Home() {
           </div>
           <div className="card">
             <ul className="checklist" style={{ margin: 0 }}>
-              <li>{t('Likes ilimitados en Descubrir', 'Unlimited likes in Discover')}</li>
-              <li>{t('Chats y datecitos sin límite', 'Unlimited chats and dates')}</li>
-              <li>{t('Aquí y ahora en cualquier lugar', 'Here & Now anywhere')}</li>
-              <li>{t('Todos los filtros, en modo “Prefiero” o “Sólo”', 'All filters, in “Prefer” or “Only” mode')}</li>
-              <li>{t('1 Super like gratis cada día', '1 free Super Like every day')}</li>
-              <li>{t('Datecito Seguro y verificación incluidos', 'Datecito Safe and verification included')}</li>
+              <li>{t('Ve quién te dio like y hazle match directo', 'See who liked you and match them directly')}</li>
+              <li>{t('Descubrir, chats y datecitos completos', 'Full Discover, chats and datecitos')}</li>
+              <li>{t('Todos los filtros y “Aquí y ahora”', 'All filters and “Here & Now”')}</li>
+              <li>{t('1 Super like gratis cada 3 días', '1 free Super Like every 3 days')}</li>
+              <li>{t('Datecito Seguro y verificación, siempre gratis', 'Datecito Safe and verification, always free')}</li>
             </ul>
           </div>
         </div>
@@ -238,35 +242,30 @@ export default function Home() {
               {
                 q: t('¿Datecito es gratis?', 'Is Datecito free?'),
                 a: t(
-                  'Sí, durante el lanzamiento. Después habrá una sola membresía con todo incluido; te avisaremos antes y nunca te cobraremos sin tu confirmación.',
-                  'Yes, during launch. After that there will be a single all-inclusive membership; we’ll let you know first and never charge you without your confirmation.',
+                  'Sí, durante el lanzamiento. Después habrá una sola membresía con todo incluido; te avisaremos antes y nunca te cobraremos sin tu confirmación. Datecito Seguro, la verificación y reportar o bloquear serán siempre gratis.',
+                  'Yes, during launch. After that there will be a single all-inclusive membership; we’ll let you know first and never charge you without your confirmation. Datecito Safe, verification and reporting or blocking will always be free.',
                 ),
               },
               {
                 q: t('¿Quién puede ver mi ubicación?', 'Who can see my location?'),
-                a: t('Nadie ve tu ubicación exacta. Sólo mostramos una distancia aproximada y la usamos únicamente mientras usas la app.', 'Nobody sees your exact location. We only show an approximate distance and use it only while you use the app.'),
+                a: t('Nadie ve tu ubicación exacta. Guardamos una ubicación aproximada (a un kilómetro) y sólo mostramos la distancia redondeada.', 'Nobody sees your exact location. We store an approximate location (to about a kilometer) and only show a rounded distance.'),
               },
               {
                 q: t('¿Cómo sé que un perfil es real?', 'How do I know a profile is real?'),
-                a: t('Busca la insignia de verificación. Además, puedes elegir que sólo perfiles verificados te escriban.', 'Look for the verification badge. You can also choose to only get messages from verified profiles.'),
+                a: t(
+                  'Busca la insignia de verificación: esa persona envió una selfie con una pose al azar que alguien del equipo comparó con sus fotos. También puedes filtrar para ver sólo perfiles verificados.',
+                  'Look for the verification badge: that person sent a selfie with a random pose that someone on our team compared with their photos. You can also filter to only see verified profiles.',
+                ),
               },
               {
-                q: t('¿En qué ciudades está Datecito?', 'Which cities is Datecito in?'),
-                a: (
-                  <>
-                    {t('Empezamos en CDMX, Guadalajara y Monterrey y crecemos a todo México.', 'We’re starting in Mexico City, Guadalajara and Monterrey and growing across Mexico.')}{' '}
-                    <Link className="link" to="/destinos">
-                      {t('Ver destinos', 'See destinations')}
-                    </Link>
-                    .
-                  </>
-                ),
+                q: t('¿Cómo me registro?', 'How do I sign up?'),
+                a: t('Con tu correo y una contraseña. Te mandamos un código de 6 dígitos para confirmar que el correo es tuyo y listo: en dos minutos tienes tu perfil.', 'With your email and a password. We send you a 6-digit code to confirm the email is yours and that’s it: your profile is ready in two minutes.'),
               },
             ]}
           />
           <div className="center" style={{ marginTop: 28 }}>
-            <Link to="/preguntas-frecuentes" className="link">
-              {t('Todas las preguntas frecuentes →', 'All FAQs →')}
+            <Link to="/ayuda" className="link">
+              {t('Ir al Centro de ayuda →', 'Go to the Help Center →')}
             </Link>
           </div>
         </div>

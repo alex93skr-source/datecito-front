@@ -14,7 +14,6 @@ export const company = {
     privacy: 'privacidad@datecito.com',
     legal: 'legal@datecito.com',
     press: 'prensa@datecito.com',
-    jobs: 'empleos@datecito.com',
     security: 'seguridad@datecito.com',
     safety: 'confianza@datecito.com',
     authorities: 'autoridades@datecito.com',
@@ -38,18 +37,16 @@ const loc = (lang: Lang) => (n: NavDef): NavLink => ({ to: n.to, icon: n.icon, l
 const products: NavDef[] = [
   { to: '/funciones', label: { es: 'Funciones', en: 'Features' }, desc: { es: 'Todo lo que puedes hacer en Datecito', en: 'Everything you can do on Datecito' }, icon: 'sparkle' },
   { to: '/membresia', label: { es: 'Membresía', en: 'Membership' }, desc: { es: 'Un solo plan, todo incluido', en: 'One plan, everything included' }, icon: 'star' },
-  { to: '/super-likes-y-boost', label: { es: 'Super likes y Boost', en: 'Super Likes & Boost' }, desc: { es: 'Destaca cuando más importa', en: 'Stand out when it matters' }, icon: 'bolt' },
+  { to: '/super-likes', label: { es: 'Super likes', en: 'Super Likes' }, desc: { es: 'Destaca cuando de verdad te interesa', en: 'Stand out when you really mean it' }, icon: 'bolt' },
   { to: '/datecitos', label: { es: 'Datecitos', en: 'Datecitos' }, desc: { es: 'Del match al plan en un toque', en: 'From match to plan in one tap' }, icon: 'coffee' },
-  { to: '/aqui-y-ahora', label: { es: 'Aquí y ahora', en: 'Here & Now' }, desc: { es: 'Gente disponible cerca, hoy', en: 'People nearby, free today' }, icon: 'radio' },
+  { to: '/aqui-y-ahora', label: { es: 'Aquí y ahora', en: 'Here & Now' }, desc: { es: 'Quién está en el mismo lugar que tú', en: 'Who is in the same place as you' }, icon: 'radio' },
   { to: '/verificacion', label: { es: 'Verificación', en: 'Verification' }, desc: { es: 'Perfiles reales con selfie', en: 'Real profiles, selfie-verified' }, icon: 'shield' },
-  { to: '/universitarios', label: { es: 'Datecito U', en: 'Datecito U' }, desc: { es: 'Para tu comunidad universitaria', en: 'For your college community' }, icon: 'graduation' },
 ];
 
 const learn: NavDef[] = [
   { to: '/blog', label: { es: 'Vida Datecito', en: 'Datecito Life' }, desc: { es: 'Historias, tendencias y cultura', en: 'Stories, trends and culture' }, icon: 'book' },
   { to: '/consejos', label: { es: 'Consejos para citas', en: 'Dating tips' }, desc: { es: 'Del primer mensaje al segundo datecito', en: 'From first message to second date' }, icon: 'heart' },
   { to: '/destinos', label: { es: 'Destinos', en: 'Destinations' }, desc: { es: 'Ideas de datecito por ciudad', en: 'Date ideas by city' }, icon: 'pin' },
-  { to: '/historias', label: { es: 'Historias de éxito', en: 'Success stories' }, desc: { es: 'Parejas que empezaron aquí', en: 'Couples who started here' }, icon: 'heart-fill' },
 ];
 
 const safety: NavDef[] = [
@@ -96,10 +93,8 @@ export function getFooter(lang: Lang): { title: string; links: NavLink[] }[] {
       title: en ? 'Company' : 'Empresa',
       links: [
         L('/nosotros', 'Acerca de Datecito', 'About Datecito'),
-        L('/empleos', 'Empleos', 'Careers'),
-        L('/tecnologia', 'Blog de tecnología', 'Tech blog'),
-        L('/prensa', 'Sala de prensa', 'Press room'),
         L('/alianzas', 'Alianzas y negocios', 'Partnerships'),
+        L('/prensa', 'Prensa', 'Press'),
         L('/marca', 'Recursos de marca', 'Brand assets'),
       ],
     },
@@ -110,7 +105,7 @@ export function getFooter(lang: Lang): { title: string; links: NavLink[] }[] {
         L('/seguridad/consejos', 'Consejos de seguridad', 'Safety tips'),
         L('/seguridad/normas-de-la-comunidad', 'Normas de la comunidad', 'Community guidelines'),
         L('/seguridad/autoridades', 'Guía para autoridades', 'Law enforcement guide'),
-        L('/transparencia', 'Informe de transparencia', 'Transparency report'),
+        L('/seguridad/menores', 'Seguridad de menores', 'Child safety'),
         L('/seguridad-informatica', 'Seguridad informática', 'Security'),
       ],
     },
@@ -120,7 +115,7 @@ export function getFooter(lang: Lang): { title: string; links: NavLink[] }[] {
         L('/preguntas-frecuentes', 'Preguntas frecuentes', 'FAQ'),
         L('/ayuda', 'Centro de ayuda', 'Help Center'),
         L('/contacto', 'Contacto', 'Contact'),
-        L('/codigo-promocional', 'Código promocional', 'Promo code'),
+        L('/eliminar-cuenta', 'Eliminar mi cuenta', 'Delete my account'),
         L('/destinos', 'Destinos', 'Destinations'),
         L('/accesibilidad', 'Accesibilidad', 'Accessibility'),
         L('/mapa-del-sitio', 'Mapa del sitio', 'Sitemap'),

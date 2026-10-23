@@ -9,7 +9,7 @@ export const terminos: LegalDoc = {
   title: 'Términos y condiciones de uso',
   summary: 'Las reglas del acuerdo entre tú y Datecito cuando usas la app, el sitio web y nuestros servicios.',
   intro: [
-    `Bienvenid@ a Datecito. Estos Términos y condiciones de uso (los “Términos”) forman un contrato vinculante entre tú y ${company.legalName} (“Datecito”, “nosotros”), con domicilio en ${company.address}. Regulan el uso de la aplicación móvil Datecito, del sitio web ${company.domain} y de cualquier otro servicio que ofrezcamos (en conjunto, el “Servicio”).`,
+    `Te damos la bienvenida a Datecito. Estos Términos y condiciones de uso (los “Términos”) forman un contrato vinculante entre tú y ${company.legalName} (“Datecito”, “nosotros”), con domicilio en ${company.address}. Regulan el uso de la aplicación móvil Datecito, del sitio web ${company.domain} y de cualquier otro servicio que ofrezcamos (en conjunto, el “Servicio”).`,
     { note: '**Por favor léelos con atención.** Al crear una cuenta o usar el Servicio aceptas estos Términos, nuestro Aviso de privacidad, la Política de cookies, los Términos de suscripción y las Normas de la comunidad. Si no estás de acuerdo, no uses el Servicio.' },
   ],
   sections: [
@@ -23,7 +23,7 @@ export const terminos: LegalDoc = {
             'Tienes al menos 18 años cumplidos.',
             'Tienes capacidad legal para celebrar un contrato vinculante con Datecito.',
             'No tienes prohibido usar el Servicio conforme a las leyes de México o de cualquier otra jurisdicción aplicable.',
-            'No has sido condenad@ por un delito grave, violento o de naturaleza sexual, ni estás inscrit@ en ningún registro público de agresores sexuales.',
+            'No tienes condena por un delito grave, violento o de naturaleza sexual, ni inscripción en ningún registro público de agresores sexuales.',
             'Cumplirás estos Términos y todas las leyes locales, estatales, nacionales e internacionales aplicables.',
             'No tienes otra cuenta activa en Datecito y no se te ha suspendido o eliminado previamente del Servicio, salvo autorización expresa nuestra.',
           ],
@@ -35,7 +35,7 @@ export const terminos: LegalDoc = {
       id: 'cuenta',
       h: '2. Tu cuenta',
       blocks: [
-        'Puedes registrarte con tu número de celular, tu correo electrónico, o mediante Google o Apple. Si usas un servicio de terceros, nos autorizas a recibir la información que ese proveedor comparta según su configuración, conforme a nuestro Aviso de privacidad.',
+        'Te registras con tu correo electrónico y una contraseña; confirmamos que el correo es tuyo con un código de un solo uso. No usamos registro con número de celular ni con cuentas de terceros.',
         'Eres responsable de mantener la confidencialidad de tus credenciales y de toda la actividad que ocurra en tu cuenta. Si crees que alguien accedió a tu cuenta sin autorización, escríbenos de inmediato a ' + e.support + '.',
         'Tu cuenta es personal e intransferible. No puedes venderla, rentarla, cederla ni permitir que otra persona la use.',
       ],
@@ -44,7 +44,7 @@ export const terminos: LegalDoc = {
       id: 'servicio',
       h: '3. Qué es (y qué no es) Datecito',
       blocks: [
-        'Datecito es una plataforma para conocer personas, conversar y proponer encuentros (“datecitos”). Entre sus funciones están Descubrir, Matches, Chat, Datecitos, Aquí y ahora, Super likes, Boost, la verificación por selfie, los Contactos de confianza y Datecito Seguro.',
+        'Datecito es una plataforma para conocer personas, conversar y proponer encuentros (“datecitos”). Entre sus funciones están Descubrir, Quién te dio like, Matches, Chat, Datecitos, Aquí y ahora, Super likes, la verificación por selfie, los Contactos de confianza y Datecito Seguro.',
         'Datecito **no** es una agencia matrimonial, no organiza ni asiste a los encuentros, no hace reservaciones en lugares y no garantiza que encontrarás pareja, que recibirás matches ni que otras personas responderán tus mensajes.',
         'Podemos agregar, modificar o retirar funciones, temporal o permanentemente. Algunas funciones pueden estar disponibles sólo en ciertas ciudades, dispositivos o para personas con membresía.',
       ],
@@ -67,7 +67,7 @@ export const terminos: LegalDoc = {
             'Grabar, difundir o amenazar con difundir imágenes íntimas de otra persona sin su consentimiento.',
           ],
         },
-        'Datecito no realiza verificaciones de antecedentes penales de sus usuari@s. La verificación por selfie confirma que la persona coincide con sus fotos, pero no garantiza su identidad, intenciones ni comportamiento. **Tú eres responsable de tus interacciones** y te recomendamos seguir nuestros Consejos de seguridad.',
+        'Datecito no realiza verificaciones de antecedentes penales de las personas usuarias. La verificación por selfie confirma que la persona coincide con sus fotos, pero no garantiza su identidad, intenciones ni comportamiento. **Tú eres responsable de tus interacciones** y te recomendamos seguir nuestros Consejos de seguridad.',
       ],
     },
     {
@@ -78,7 +78,7 @@ export const terminos: LegalDoc = {
         'Eres responsable de las fotos, textos, mensajes y demás contenido que publiques o envíes (“Tu contenido”). Declaras que tienes los derechos necesarios sobre él y que no infringe derechos de terceros ni la ley.',
         'Conservas la titularidad de Tu contenido. Para operar el Servicio nos otorgas una licencia mundial, no exclusiva, gratuita, transferible y sublicenciable para alojar, almacenar, reproducir, adaptar (por ejemplo, recortar o comprimir), mostrar y distribuir Tu contenido dentro del Servicio y en materiales promocionales de Datecito sólo si nos das tu consentimiento expreso. Esta licencia termina cuando eliminas el contenido o tu cuenta, salvo copias que debamos conservar por obligación legal o de seguridad.',
         { h3: '5.2 Contenido de otras personas' },
-        'El contenido de otr@s usuari@s es responsabilidad de quien lo publica. No lo verificamos previamente, pero lo moderamos con herramientas automatizadas y revisión humana y podemos retirarlo si incumple estas reglas.',
+        'El contenido de otras personas usuarias es responsabilidad de quien lo publica. No lo verificamos previamente, pero lo moderamos mediante revisión humana y reportes de la comunidad, y podemos retirarlo si incumple estas reglas.',
         { h3: '5.3 Nuestro contenido' },
         'El software, diseño, marcas, logotipos, textos e ilustraciones de Datecito son de nuestra propiedad o de nuestros licenciantes y están protegidos por la Ley Federal del Derecho de Autor y la Ley Federal de Protección a la Propiedad Industrial. Te otorgamos una licencia personal, limitada, revocable y no transferible para usar la app con fines personales y no comerciales.',
       ],
@@ -97,7 +97,7 @@ export const terminos: LegalDoc = {
       blocks: [
         'Puedes reportar perfiles, mensajes o conductas desde la app. Revisamos los reportes con discreción y no informamos a la persona reportada quién la reportó.',
         'Podemos advertir, limitar funciones, suspender o eliminar tu cuenta, sin previo aviso, si consideramos razonablemente que incumpliste estos Términos o las Normas de la comunidad, si tu conducta pone en riesgo a otras personas o si lo exige la ley. Si eliminamos tu cuenta por incumplimiento, no tendrás derecho a reembolso de compras, salvo lo que disponga la ley.',
-        'Puedes eliminar tu cuenta en cualquier momento desde Ajustes › Cuenta › Eliminar cuenta. Eliminar la cuenta no cancela automáticamente una suscripción contratada a través de una tienda.',
+        'Puedes eliminar tu cuenta en cualquier momento desde Perfil › Ajustes › Cuenta › Eliminar mi cuenta, o siguiendo las instrucciones de datecito.com/es/eliminar-cuenta. Eliminar la cuenta no cancela automáticamente una suscripción contratada a través de una tienda.',
       ],
     },
     {
@@ -112,12 +112,12 @@ export const terminos: LegalDoc = {
     {
       id: 'indemnizacion',
       h: '9. Indemnización',
-      blocks: ['Aceptas sacar en paz y a salvo a Datecito, sus filiales, consejer@s, emplead@s y agentes de cualquier reclamación, daño o gasto (incluidos honorarios razonables de abogad@s) derivados de tu incumplimiento de estos Términos, de Tu contenido o de tu conducta con otras personas usuarias.'],
+      blocks: ['Aceptas sacar en paz y a salvo a Datecito, sus filiales, personas consejeras, empleadas y agentes de cualquier reclamación, daño o gasto (incluidos honorarios razonables de abogados) derivados de tu incumplimiento de estos Términos, de Tu contenido o de tu conducta con otras personas usuarias.'],
     },
     {
       id: 'terceros',
       h: '10. Servicios de terceros',
-      blocks: ['El Servicio puede mostrar enlaces, mapas o integraciones con servicios de terceros (por ejemplo, Google Maps, WhatsApp o las tiendas de aplicaciones). No controlamos esos servicios y su uso se rige por sus propios términos y avisos de privacidad.'],
+      blocks: ['El Servicio puede mostrar enlaces o integraciones con servicios de terceros (por ejemplo, WhatsApp para avisar a tus contactos de confianza, o las tiendas de aplicaciones). No controlamos esos servicios y su uso se rige por sus propios términos y avisos de privacidad.'],
     },
     {
       id: 'disputas',
@@ -155,7 +155,7 @@ export const suscripciones: LegalDoc = {
             head: ['Producto', 'Precio de referencia', 'Incluye'],
             rows: [
               ['Membresía mensual', `${money(p.monthly)} / mes`, 'Ver quién te dio like; likes, chats y datecitos; Aquí y ahora en cualquier lugar; todos los filtros; 1 Super like gratis cada 3 días; Datecito Seguro y verificación.'],
-              ['Membresía anual', `${money(p.yearly)} / año`, 'Todo lo de la mensual + 1 Boost cada semana. Equivale a dos meses gratis.'],
+              ['Membresía anual', `${money(p.yearly)} / año`, 'Todo lo de la mensual al precio de 10 meses: equivale a dos meses gratis.'],
               [`Paquete de ${p.superPackQty} Super likes`, money(p.superPack), 'Compra única. Los Super likes no caducan mientras tu cuenta esté activa.'],
             ],
           },
@@ -191,7 +191,7 @@ export const suscripciones: LegalDoc = {
     {
       id: 'virtuales',
       h: '5. Artículos virtuales',
-      blocks: ['Los Super likes y Boosts son licencias de uso limitadas, sin valor monetario, no reembolsables (salvo disposición legal) y no transferibles. No pueden canjearse por dinero. Si tu cuenta se elimina, los artículos no utilizados se pierden.'],
+      blocks: ['Los Super likes son licencias de uso limitadas, sin valor monetario, no reembolsables (salvo disposición legal) y no transferibles. No pueden canjearse por dinero. Si tu cuenta se elimina, los artículos no utilizados se pierden.'],
     },
     {
       id: 'promociones',
@@ -210,13 +210,13 @@ export const propiedadIntelectual: LegalDoc = {
   slug: 'propiedad-intelectual',
   title: 'Política de propiedad intelectual',
   summary: 'Cómo protegemos nuestras marcas y cómo reportar contenido que infrinja tus derechos.',
-  intro: ['Datecito respeta los derechos de propiedad intelectual de terceros y espera lo mismo de sus usuari@s. Esta política explica cómo reportar una posible infracción y cómo usar nuestras marcas.'],
+  intro: ['Datecito respeta los derechos de propiedad intelectual de terceros y espera lo mismo de las personas usuarias. Esta política explica cómo reportar una posible infracción y cómo usar nuestras marcas.'],
   sections: [
     {
       id: 'marcas',
       h: '1. Nuestras marcas',
       blocks: [
-        '“Datecito”, el logotipo con corazón y destellos, “Aquí y ahora”, “Datecito Seguro”, “Datecito U” y demás signos distintivos son marcas de ' + company.legalName + ' [registradas o en trámite ante el IMPI]. No pueden usarse sin autorización previa y por escrito.',
+        '“Datecito”, el logotipo con corazón y destellos, “Aquí y ahora”, “Datecito Seguro” y demás signos distintivos son marcas de ' + company.legalName + '. No pueden usarse sin autorización previa y por escrito.',
         'Si quieres usar nuestra marca en prensa o alianzas, consulta los Recursos de marca o escríbenos a ' + e.press + '.',
       ],
     },
@@ -231,7 +231,7 @@ export const propiedadIntelectual: LegalDoc = {
             'Descripción de la obra protegida que consideras infringida.',
             'Ubicación precisa del contenido en Datecito (nombre del perfil, capturas de pantalla).',
             'Una declaración, bajo protesta de decir verdad, de que crees de buena fe que el uso no está autorizado por la persona titular, su representante o la ley.',
-            'Una declaración de que la información del aviso es exacta y de que eres titular de los derechos o estás autorizad@ para actuar en su nombre.',
+            'Una declaración de que la información del aviso es exacta y de que eres titular de los derechos o cuentas con autorización para actuar en su nombre.',
             'Tu firma física o electrónica.',
           ],
         },
@@ -246,7 +246,7 @@ export const propiedadIntelectual: LegalDoc = {
     {
       id: 'reincidencia',
       h: '4. Reincidencia',
-      blocks: ['Eliminaremos las cuentas de usuari@s que infrinjan de forma reiterada derechos de propiedad intelectual de terceros.'],
+      blocks: ['Eliminaremos las cuentas de las personas que infrinjan de forma reiterada derechos de propiedad intelectual de terceros.'],
     },
   ],
 };

@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { Alert, Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 
 import { ApiError, datecitos, safety, SafeSession, TrustedContact } from '../../api';
 import { Body, Button, Chip, ErrorNotice, Eyebrow, H1, Loading, Notice, Screen, ToggleRow, TopBar } from '../../components/ui';
@@ -214,7 +214,7 @@ function Active({ session, onChange }: { session: SafeSession; onChange: (s: Saf
         <Tool icon="share-social-outline" title="Enviar por otro medio" text="SMS, Telegram o lo que uses." onPress={() => Share.share({ message: session.share_message }).catch(() => undefined)} />
         <Tool icon="call-outline" title="Llamada de salida" text="Recibe una llamada falsa para irte sin dar explicaciones." onPress={() => router.push('/safety/fake-call')} />
         <Tool danger icon="alert-circle-outline" title="Necesito ayuda" text="Prepara un mensaje urgente para tu contacto." onPress={askHelp} />
-        <Tool danger icon="call" title="Llamar al 911" text="Emergencias." onPress={() => Alert.alert('Llamar al 911', 'En la versión final este botón marca directamente al 911.')} />
+        <Tool danger icon="call" title="Llamar al 911" text="Emergencias." onPress={() => Linking.openURL('tel:911').catch(() => Alert.alert('No se pudo abrir el teléfono', 'Marca 911 manualmente.'))} />
 
         <Button label="Terminar: ya estoy en casa" variant="ghost" onPress={async () => (await run(() => safety.endSession(session.id))) && router.back()} />
       </ScrollView>

@@ -9,7 +9,7 @@ export const normas: LegalDoc = {
   summary: 'Lo que se vale y lo que no en Datecito. Aplican dentro y fuera de la app.',
   intro: [
     'Datecito existe para que conocer personas sea emocionante y seguro. Estas normas aplican a todo lo que haces en la app: tu perfil, tus mensajes, tus datecitos y, cuando afecta a nuestra comunidad, tu conducta fuera de ella.',
-    { note: 'Si alguien incumple estas normas, repórtal@ desde su perfil o el chat (menú ⋯ › Reportar). Es anónimo: la otra persona no sabrá que fuiste tú.' },
+    { note: 'Si alguien incumple estas normas, repórtalo desde su perfil o el chat (menú ⋯ › Reportar). Es anónimo: la otra persona no sabrá que fuiste tú.' },
   ],
   sections: [
     {
@@ -69,19 +69,19 @@ export const autoridades: LegalDoc = {
   slug: 'autoridades',
   title: 'Guía para autoridades',
   summary: 'Cómo pueden las autoridades solicitar información sobre cuentas de Datecito.',
-  intro: ['Esta guía está dirigida exclusivamente a autoridades de procuración e impartición de justicia. Si eres usuari@ y necesitas ayuda, visita el Centro de ayuda o el Centro de seguridad.'],
+  intro: ['Esta guía está dirigida exclusivamente a autoridades de procuración e impartición de justicia. Si eres una persona usuaria y necesitas ayuda, visita el Centro de ayuda o el Centro de seguridad.'],
   sections: [
     {
       id: 'principios',
       h: '1. Principios',
-      blocks: ['Datecito respeta la privacidad de sus usuari@s y entrega información únicamente cuando recibe un requerimiento válido emitido por autoridad competente, debidamente fundado y motivado, conforme a la legislación mexicana aplicable.'],
+      blocks: ['Datecito respeta la privacidad de las personas usuarias y entrega información únicamente cuando recibe un requerimiento válido emitido por autoridad competente, debidamente fundado y motivado, conforme a la legislación mexicana aplicable.'],
     },
     {
       id: 'como',
       h: '2. Cómo enviar un requerimiento',
       blocks: [
         'Envía el oficio en formato PDF, firmado, a ' + e.authorities + ' o a nuestro domicilio: ' + company.address + '. El requerimiento debe incluir:',
-        { ul: ['Autoridad solicitante, número de oficio y carpeta de investigación o expediente.', 'Fundamento legal.', 'Identificadores de la cuenta: número de celular, correo electrónico o identificador de usuari@ (no basta con el nombre).', 'Información específica solicitada y periodo.', 'Datos de contacto de la persona servidora pública responsable.'] },
+        { ul: ['Autoridad solicitante, número de oficio y carpeta de investigación o expediente.', 'Fundamento legal.', 'Identificadores de la cuenta: correo electrónico o identificador de usuario (no basta con el nombre).', 'Información específica solicitada y periodo.', 'Datos de contacto de la persona servidora pública responsable.'] },
       ],
     },
     {
@@ -92,11 +92,11 @@ export const autoridades: LegalDoc = {
     {
       id: 'conservacion',
       h: '4. Solicitudes de conservación',
-      blocks: ['Podemos conservar la información de una cuenta por [90] días mientras se obtiene el requerimiento formal, previa solicitud oficial.'],
+      blocks: ['Podemos conservar la información de una cuenta por 90 días mientras se obtiene el requerimiento formal, previa solicitud oficial.'],
     },
     {
       id: 'notificacion',
-      h: '5. Notificación a usuari@s',
+      h: '5. Notificación a personas usuarias',
       blocks: ['Salvo prohibición legal o riesgo para una investigación o para una persona, podemos notificar a la persona usuaria antes de entregar su información.'],
     },
   ],
@@ -106,12 +106,12 @@ export const accesibilidad: LegalDoc = {
   slug: 'accesibilidad',
   title: 'Declaración de accesibilidad',
   summary: 'Nuestro compromiso para que todas las personas puedan usar Datecito.',
-  intro: ['Queremos que Datecito sea para todas las personas. Trabajamos para que la app y este sitio sean accesibles conforme a las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.2, nivel AA.'],
+  intro: ['Queremos que Datecito sea para todas las personas. Trabajamos para que la app y este sitio sean accesibles tomando como referencia las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.2, nivel AA. Somos un equipo pequeño y seguimos mejorando.'],
   sections: [
     {
       id: 'medidas',
       h: 'Lo que hacemos',
-      blocks: [{ ul: ['Contraste de color suficiente en textos y botones.', 'Navegación completa con teclado y foco visible.', 'Etiquetas accesibles en íconos y controles para lectores de pantalla (VoiceOver y TalkBack).', 'Texto que se adapta al tamaño de fuente del sistema.', 'Retroalimentación háptica y textual, no sólo por color.', 'Pruebas con personas usuarias con discapacidad.'] }],
+      blocks: [{ ul: ['Contraste de color suficiente en textos y botones.', 'Navegación completa con teclado y foco visible.', 'Etiquetas accesibles en íconos y controles para lectores de pantalla (VoiceOver y TalkBack).', 'Texto que se adapta al tamaño de fuente del sistema.', 'Retroalimentación háptica y textual, no sólo por color.', 'Revisión manual con lectores de pantalla.'] }],
     },
     {
       id: 'limitaciones',
@@ -148,7 +148,7 @@ export const seguridadInformatica: LegalDoc = {
     {
       id: 'compromiso',
       h: '3. Nuestro compromiso',
-      blocks: ['Confirmaremos la recepción en 3 días hábiles, te mantendremos informad@ y, si actuaste de buena fe conforme a esta política, no emprenderemos acciones legales en tu contra. Reconoceremos tu aporte en nuestro salón de la fama si así lo deseas.'],
+      blocks: ['Confirmaremos la recepción en 3 días hábiles, te mantendremos al tanto y, si actuaste de buena fe conforme a esta política, no emprenderemos acciones legales en tu contra. Si lo deseas, reconoceremos tu aporte públicamente.'],
     },
     {
       id: 'alcance',

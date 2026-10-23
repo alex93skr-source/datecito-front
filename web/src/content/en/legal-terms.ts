@@ -35,7 +35,7 @@ export const terminos: LegalDoc = {
       id: 'cuenta',
       h: '2. Your account',
       blocks: [
-        'You can sign up in the app with your phone number, your email, or through Google or Apple. If you use a third-party service, you authorize us to receive the information that provider shares according to its settings, as described in our Privacy Notice.',
+        'You sign up with your email and a password; we confirm the email is yours with a one-time code. We do not offer sign-up with a phone number or third-party accounts.',
         'You are responsible for keeping your credentials confidential and for all activity on your account. If you believe someone accessed your account without authorization, write to us immediately at ' + e.support + '.',
         'Your account is personal and non-transferable. You may not sell, rent, assign or let anyone else use it.',
       ],
@@ -44,7 +44,7 @@ export const terminos: LegalDoc = {
       id: 'servicio',
       h: '3. What Datecito is (and isn’t)',
       blocks: [
-        'Datecito is a platform to meet people, chat and propose meetups (“datecitos”). Its features include Discover, Matches, Chat, Datecitos, Here & Now, Super Likes, Boost, selfie verification, Trusted Contacts and Datecito Safe.',
+        'Datecito is a platform to meet people, chat and propose meetups (“datecitos”). Its features include Discover, Who Liked You, Matches, Chat, Datecitos, Here & Now, Super Likes, selfie verification, Trusted Contacts and Datecito Safe.',
         'Datecito is **not** a matchmaking agency, does not organize or attend meetups, does not make reservations at venues and does not guarantee that you will find a partner, get matches or that other people will reply to your messages.',
         'We may add, change or remove features, temporarily or permanently. Some features may only be available in certain cities, on certain devices or to members.',
       ],
@@ -78,7 +78,7 @@ export const terminos: LegalDoc = {
         'You are responsible for the photos, text, messages and other content you post or send (“Your Content”). You represent that you have the necessary rights to it and that it does not infringe third-party rights or the law.',
         'You keep ownership of Your Content. To operate the Service you grant us a worldwide, non-exclusive, royalty-free, transferable and sublicensable license to host, store, reproduce, adapt (for example, crop or compress), display and distribute Your Content within the Service, and in Datecito promotional materials only with your express consent. This license ends when you delete the content or your account, except for copies we must keep for legal or safety reasons.',
         { h3: '5.2 Other people’s content' },
-        'Content from other users is the responsibility of whoever posts it. We do not pre-screen it, but we moderate it with automated tools and human review and may remove it if it breaks these rules.',
+        'Content from other users is the responsibility of whoever posts it. We do not pre-screen it, but we moderate it through human review and community reports, and may remove it if it breaks these rules.',
         { h3: '5.3 Our content' },
         'Datecito’s software, design, trademarks, logos, text and illustrations belong to us or our licensors and are protected by Mexico’s Federal Copyright Law and Federal Industrial Property Protection Law. We grant you a personal, limited, revocable and non-transferable license to use the app for personal, non-commercial purposes.',
       ],
@@ -97,7 +97,7 @@ export const terminos: LegalDoc = {
       blocks: [
         'You can report profiles, messages or behavior from the app. We review reports discreetly and do not tell the reported person who reported them.',
         'We may warn you, limit features, suspend or delete your account without prior notice if we reasonably believe you broke these Terms or the Community Guidelines, if your conduct puts others at risk or if the law requires it. If we delete your account for a violation, you will not be entitled to a refund of purchases, except as provided by law.',
-        'You can delete your account at any time in Settings › Account › Delete account. Deleting your account does not automatically cancel a subscription purchased through a store.',
+        'You can delete your account at any time in Profile › Settings › Account › Delete my account, or by following the instructions at datecito.com/en/eliminar-cuenta. Deleting your account does not automatically cancel a subscription purchased through a store.',
       ],
     },
     {
@@ -117,7 +117,7 @@ export const terminos: LegalDoc = {
     {
       id: 'terceros',
       h: '10. Third-party services',
-      blocks: ['The Service may show links, maps or integrations with third-party services (for example, Google Maps, WhatsApp or the app stores). We do not control those services, and their use is governed by their own terms and privacy notices.'],
+      blocks: ['The Service may show links or integrations with third-party services (for example, WhatsApp to alert your trusted contacts, or the app stores). We do not control those services, and their use is governed by their own terms and privacy notices.'],
     },
     {
       id: 'disputas',
@@ -155,7 +155,7 @@ export const suscripciones: LegalDoc = {
             head: ['Product', 'Reference price', 'Includes'],
             rows: [
               ['Monthly membership', `${money(p.monthly)} / month`, 'See who liked you; likes, chats and datecitos; Here & Now anywhere; all filters; 1 free Super Like every 3 days; Datecito Safe and verification.'],
-              ['Yearly membership', `${money(p.yearly)} / year`, 'Everything in monthly + 1 Boost every week. Equals two months free.'],
+              ['Yearly membership', `${money(p.yearly)} / year`, 'Everything in monthly for the price of 10 months: equals two months free.'],
               [`Pack of ${p.superPackQty} Super Likes`, money(p.superPack), 'One-time purchase. Super Likes don’t expire while your account is active.'],
             ],
           },
@@ -191,7 +191,7 @@ export const suscripciones: LegalDoc = {
     {
       id: 'virtuales',
       h: '5. Virtual items',
-      blocks: ['Super Likes and Boosts are limited licenses to use, with no monetary value, non-refundable (except as required by law) and non-transferable. They cannot be exchanged for money. If your account is deleted, unused items are lost.'],
+      blocks: ['Super Likes are limited licenses to use, with no monetary value, non-refundable (except as required by law) and non-transferable. They cannot be exchanged for money. If your account is deleted, unused items are lost.'],
     },
     {
       id: 'promociones',
@@ -216,7 +216,7 @@ export const propiedadIntelectual: LegalDoc = {
       id: 'marcas',
       h: '1. Our trademarks',
       blocks: [
-        '“Datecito”, the heart-and-sparks logo, “Here & Now” (“Aquí y ahora”), “Datecito Safe” (“Datecito Seguro”), “Datecito U” and other distinctive signs are trademarks of ' + company.legalName + ' [registered or pending before IMPI]. They may not be used without prior written authorization.',
+        '“Datecito”, the heart-and-sparks logo, “Here & Now” (“Aquí y ahora”), “Datecito Safe” (“Datecito Seguro”) and other distinctive signs are trademarks of ' + company.legalName + '. They may not be used without prior written authorization.',
         'If you want to use our brand for press or partnerships, see the Brand Assets page or write to ' + e.press + '.',
       ],
     },

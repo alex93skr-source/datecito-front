@@ -102,11 +102,11 @@ export function DocPage({ doc, crumbs, eyebrow = 'Legal' }: { doc: LegalDoc; cru
                 <Blocks blocks={s.blocks} />
               </section>
             ))}
-            <div className="notice" style={{ marginTop: 32 }}>
+            {company.legalName.startsWith('[') ? <div className="notice" style={{ marginTop: 32 }}>
               {t('Los textos resaltados como ', 'Text highlighted ')}
               <span className="ph">{t('[así]', '[like this]')}</span>
               {t(' son datos pendientes de completar. Este documento es un borrador sujeto a revisión legal.', ' is pending information. This document is a draft subject to legal review.')}
-            </div>
+            </div> : null}
           </article>
         </div>
       </section>

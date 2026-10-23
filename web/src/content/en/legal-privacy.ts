@@ -19,9 +19,9 @@ export const privacidad: LegalDoc = {
         { h3: 'Data you give us' },
         {
           ul: [
-            '**Identification and contact:** name, date of birth, phone number, email.',
-            '**Profile:** photos, gender, who you want to meet, interests, bio, occupation, education, height and other optional details you choose to show.',
-            '**Verification:** verification selfie and, where applicable, the result of the face comparison (see Sensitive Data Policy).',
+            '**Identification and contact:** name, date of birth and email.',
+            '**Profile:** photos, gender, who you want to meet, what you’re looking for and your relationship type, interests, sports teams, music, languages, bio, occupation, prompt answers and other optional details you choose to show.',
+            '**Verification:** verification selfie, the requested pose and the review result (approved or rejected). See the Sensitive Data Policy.',
             '**Communications:** chat messages, proposed datecitos, reports and conversations with support.',
             '**Trusted contacts:** name and phone number of the people you choose for Datecito Safe.',
             '**Purchases:** transaction ID and membership status (your card details are processed by Google Play or the App Store; we never receive them).',
@@ -36,14 +36,14 @@ export const privacidad: LegalDoc = {
           ],
         },
         { h3: 'Data from third parties' },
-        { ul: ['If you sign in with Google or Apple, we receive your name, email and an account identifier.', 'Other users may give us information about you when they report you or mention you in a report.'] },
+        { ul: ['Other users may give us information about you when they report you or mention you in a report.', 'If you write to us from the website, we receive the data you include in the form.'] },
       ],
     },
     {
       id: 'sensibles',
       h: '2. Sensitive personal data',
       blocks: [
-        'Some data may reveal sensitive aspects, such as your sexual orientation (implied by who you want to meet), your sex life, your beliefs or your biometric verification data. We only process it with your **express consent**, which you give by filling in those fields or starting verification, and you can withdraw it at any time. See the Sensitive Data Policy.',
+        'Some data may reveal sensitive aspects, such as your sexual orientation (implied by who you want to meet), your sex life or the image of your face in the verification selfie. We only process it with your **express consent**, which you give by filling in those fields or starting verification, and you can withdraw it at any time. See the Sensitive Data Policy.',
       ],
     },
     {
@@ -71,7 +71,7 @@ export const privacidad: LegalDoc = {
             'Show you Datecito ads on other platforms.',
           ],
         },
-        'If you don’t want us to process your data for secondary purposes, you can say so in Settings › Privacy, in Your Privacy Choices on the website or by writing to ' + e.privacy + '. Opting out will not be a reason to deny you the Service.',
+        'If you don’t want us to process your data for secondary purposes, you can say so in Profile › Settings › Notifications (news and promotions) or by writing to ' + e.privacy + '. Opting out will not be a reason to deny you the Service.',
       ],
     },
     {
@@ -81,14 +81,14 @@ export const privacidad: LegalDoc = {
         { h3: 'Other users' },
         'Your public profile (photos, name, age, approximate distance, verification badge and whatever you choose to show) is visible to other users. Your messages are only seen by the people you chat with.',
         { h3: 'Processors' },
-        'We share data with providers who serve us under contract and confidentiality obligations: cloud hosting, SMS and notification delivery, face verification, content moderation, customer support and analytics.',
+        'We share data with providers who serve us under contract and confidentiality obligations: cloud hosting, email and notification delivery, and photo storage. Verification and report reviews are done by Datecito staff, not an external provider.',
         { h3: 'Transfers that do not require your consent' },
         {
           table: {
             head: ['Recipient', 'Purpose'],
             rows: [
               ['Competent authorities', 'Comply with legal requirements, court orders or protect a person’s life or safety.'],
-              ['Companies in the same group [if applicable]', 'Operation and support of the Service under the same policies.'],
+              ['Companies in the same group, should any exist', 'Operation and support of the Service under the same policies.'],
               ['Acquirer in a merger or sale', 'Continuity of the Service, keeping this Notice.'],
             ],
           },
@@ -106,27 +106,27 @@ export const privacidad: LegalDoc = {
         'To exercise them, send your request through this site’s ARCO Rights form or to ' + e.privacy + ', including:',
         {
           ul: [
-            'Your name and the email or phone number linked to your account.',
+            'Your name and the email linked to your account.',
             'A document proving your identity or, where applicable, that of your legal representative.',
             'A clear description of the data and the right you wish to exercise.',
             'Any other information that helps us locate your data.',
           ],
         },
-        'We will respond within a maximum of 20 business days and, if applicable, carry out the request within the following 15 business days. You can exercise many of these rights directly in the app: edit your profile, download your data (Settings › Privacy › Download my data) or delete your account.',
+        'We will respond within a maximum of 20 business days and, if applicable, carry out the request within the following 15 business days. You can exercise many of these rights directly in the app: edit your profile or delete your account (Profile › Settings › Account). To receive a copy of your data, use the form and choose “Access”.',
       ],
     },
     {
       id: 'conservacion',
       h: '6. Retention',
       blocks: [
-        'We keep your data while your account is active. When you delete it, we erase or anonymize your information within [90] days, except:',
-        { ul: ['Safety and report information (for example, to prevent an account removed for abuse from signing up again), which we keep for up to [3] years.', 'Transaction information, which we keep for the period required by tax laws.', 'Data subject to an investigation, legal request or litigation.'] },
+        'We keep your data while your account is active. When you delete it, we erase your profile, photos, selfie, matches and messages immediately, and database backups are overwritten within 14 days at most, except:',
+        { ul: ['Safety and report information (for example, to prevent an account removed for abuse from signing up again), which we keep for up to 3 years.', 'Transaction information, which we keep for the period required by tax laws.', 'Data subject to an investigation, legal request or litigation.'] },
       ],
     },
     {
       id: 'seguridad',
       h: '7. Security',
-      blocks: ['We apply administrative, technical and physical measures to protect your data: encryption in transit, role-based access control, secure credential storage on your device and monitoring of suspicious activity. No measure is foolproof; if we detect a breach that significantly affects your rights, we will inform you without delay.'],
+      blocks: ['We apply administrative, technical and physical measures to protect your data: encryption in transit, encryption at rest for messages, trusted contacts and sensitive data, passwords protected with Argon2id, role-based access control, secure credential storage on your device and monitoring of suspicious activity. No measure is foolproof; if we detect a breach that significantly affects your rights, we will inform you without delay.'],
     },
     {
       id: 'cookies',
@@ -151,7 +151,7 @@ export const privacidad: LegalDoc = {
     {
       id: 'autoridad',
       h: '12. Authority',
-      blocks: ['If you believe your right to data protection has been violated, you may go to the competent personal data protection authority: [current supervisory authority under the Law].'],
+      blocks: ['If you believe your right to data protection has been violated, you may go to the competent personal data protection authority: the supervisory authority for personal data protection (currently the Secretaría Anticorrupción y Buen Gobierno, following the 2025 reform).'],
     },
   ],
 };
@@ -167,7 +167,7 @@ export const privacidadSimplificado: LegalDoc = {
       h: 'What do we use your data for?',
       blocks: [
         'To create your account, show your profile, recommend people nearby, enable matches, chats and datecitos, run Datecito Safe, prevent fraud and abuse, process your membership and give you support.',
-        'Secondarily, and only if you don’t opt out, to send you news and promotions, analyze app usage and show you Datecito ads. You can opt out in Settings › Privacy or at ' + e.privacy + '.',
+        'Secondarily, and only if you don’t opt out, to send you news and promotions, analyze app usage and show you Datecito ads. You can opt out in Profile › Settings › Notifications or at ' + e.privacy + '.',
       ],
     },
     {
@@ -186,7 +186,7 @@ export const privacidadSimplificado: LegalDoc = {
 export const datosSensibles: LegalDoc = {
   slug: 'datos-sensibles',
   title: 'Sensitive Personal Data Policy',
-  summary: 'How we handle sexual orientation, verification biometrics, health and other sensitive data.',
+  summary: 'How we handle sexual orientation, the verification selfie and other sensitive data.',
   intro: ['In a dating app some data is especially delicate. This policy supplements the Comprehensive Privacy Notice and explains in more detail how we protect it.'],
   sections: [
     {
@@ -198,8 +198,8 @@ export const datosSensibles: LegalDoc = {
             head: ['Data', 'Where it comes from', 'What for'],
             rows: [
               ['Sexual orientation and gender identity', 'Your gender and who you want to meet', 'Recommend compatible profiles.'],
-              ['Biometric data (facial geometry)', 'Verification selfie', 'Confirm your photos are yours and grant you the verification badge.'],
-              ['Religious beliefs, ethnic origin, health', 'Optional profile fields you choose to fill in', 'Show them on your profile and, if you choose, use them as a filter.'],
+              ['Image of your face', 'Verification selfie with the requested pose', 'Let a team member confirm your photos are yours and grant you the verification badge.'],
+              ['Relationship type and what you’re looking for', 'Optional profile fields', 'Show them on your profile if you choose and recommend like-minded people.'],
               ['Sex life or intimacy', 'Content of your messages', 'Only processed to deliver your messages and, where applicable, investigate reports.'],
             ],
           },
@@ -215,7 +215,7 @@ export const datosSensibles: LegalDoc = {
       id: 'biometria',
       h: '3. Selfie verification',
       blocks: [
-        { ul: ['We compare your selfie with your profile photos to generate a match result.', 'The biometric template is used only for verification and deleted within [30] days of the process ending; we keep only the result (verified / not verified).', 'We never use your biometrics for advertising or share them with third parties, except with the verification provider acting on our behalf.'] },
+        { ul: ['A team member compares your selfie with your profile photos and checks that you made the requested pose. We do not generate biometric templates or use automated facial recognition.', 'The selfie is stored encrypted in private storage, never shown on your profile, and deleted 30 days after the review ends; we keep only the result (verified / not verified).', 'We never use your selfie for advertising or share it with third parties.'] },
       ],
     },
     {
@@ -251,9 +251,9 @@ export const cookies: LegalDoc = {
             head: ['Category', 'What it does', 'Can you turn it off?'],
             rows: [
               ['Strictly necessary', 'Security, fraud prevention, remembering your cookie and language choices, load balancing.', 'No'],
-              ['Analytics and performance', 'Count visits, measure which pages work best and detect errors.', 'Yes'],
-              ['Personalization', 'Remember region and display preferences.', 'Yes'],
-              ['Advertising', 'Measure the effectiveness of Datecito campaigns and show you relevant ads on other sites.', 'Yes'],
+              ['Analytics and performance', 'Count visits, measure which pages work best and detect errors. Not used for now.', 'Yes'],
+              ['Personalization', 'Remember additional display preferences. Not used for now.', 'Yes'],
+              ['Advertising', 'Measure the effectiveness of Datecito campaigns and show you relevant ads on other sites. Not used for now.', 'Yes'],
             ],
           },
         },
@@ -269,13 +269,10 @@ export const cookies: LegalDoc = {
             rows: [
               ['datecito.cookies.v1', 'Datecito', 'Necessary', 'Persistent (until you delete it)'],
               ['datecito.lang', 'Datecito', 'Necessary', 'Persistent (until you delete it)'],
-              ['[_session]', 'Datecito', 'Necessary', 'Session'],
-              ['[_ga, _ga_*]', '[Analytics provider]', 'Analytics', '[13 months]'],
-              ['[_fbp]', '[Advertising provider]', 'Advertising', '[3 months]'],
             ],
           },
         },
-        'This table will be updated as we integrate third-party tools.',
+        'Today we only use those two local-storage entries; there are no third-party cookies. If we integrate analytics or advertising, we will update this table and ask for your consent before enabling them.',
       ],
     },
     {

@@ -1,0 +1,11 @@
+{
+  "name": "Datecito",
+  "short_name": "Datecito",
+  "description": "Conoce personas reales cerca de ti y conviértelo en un plan.",
+  "start_url": "/es",
+  "display": "browser",
+  "background_color": "#F9F3EC",
+  "theme_color": "#0F3D32",
+  "lang": "es-MX",
+  "icons": [{ "src": "/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }]
+}

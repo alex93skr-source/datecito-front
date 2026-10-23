@@ -1,6 +1,7 @@
 import { Fragment, type ReactNode } from 'react';
 
 import { Link, useT } from '../i18n';
+import { Seo } from '../seo';
 import { useApp } from './AppState';
 import { Icon, type IconName } from './Icon';
 
@@ -73,6 +74,7 @@ export function PageHero({
   dark,
   children,
   aside,
+  noSeo,
 }: {
   eyebrow?: string;
   title: ReactNode;
@@ -81,9 +83,13 @@ export function PageHero({
   dark?: boolean;
   children?: ReactNode;
   aside?: ReactNode;
+  /** La página declara su propio <Seo>. */
+  noSeo?: boolean;
 }) {
   const body = (
     <div>
+      {/* Título y entradilla de la página son también su título y descripción para buscadores. */}
+      {!noSeo && typeof title === 'string' ? <Seo title={title} description={typeof lead === 'string' ? lead : undefined} /> : null}
       {crumbs ? <Breadcrumbs items={crumbs} /> : null}
       {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
       <h1>{title}</h1>

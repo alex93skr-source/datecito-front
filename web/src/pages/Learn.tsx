@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useApp } from '../components/AppState';
 import { Blocks } from '../components/Doc';
+import { FormError, Honeypot, useWebForm } from '../components/forms';
 import { Icon, type IconName } from '../components/Icon';
 import { CtaBand, PageHero, SectionHead } from '../components/ui';
 import { useContent } from '../content';
-import { Link, useT } from '../i18n';
+import { Link, useLang, useT } from '../i18n';
+import { Seo, SITE_URL } from '../seo';
 import NotFound from './NotFound';
-
-const SOON = /^(Próximamente|Coming soon): /;
 
 export function Blog() {
   const t = useT();
@@ -24,7 +23,7 @@ export function Blog() {
     <>
       <PageHero
         eyebrow={t('Vida Datecito', 'Datecito Life')}
-        title={t('Historias, consejos y cultura de citas', 'Stories, tips and dating culture')}
+        title={t('Consejos, seguridad y cultura de citas', 'Tips, safety and dating culture')}
         lead={t('Todo lo que nos gusta platicar sobre conocer gente, salir y querernos bonito.', 'Everything we love talking about: meeting people, going out and loving well.')}
         crumbs={[{ label: 'Blog' }]}
       />
@@ -78,34 +77,36 @@ export function Blog() {
 
 function Newsletter() {
   const t = useT();
-  const [done, setDone] = useState(false);
+  const form = useWebForm('newsletter');
   return (
     <section className="section alt">
       <div className="container narrow center">
         <h2>{t('Recibe lo mejor de Vida Datecito', 'Get the best of Datecito Life')}</h2>
-        <p className="lead">{t('Un correo al mes con consejos, ideas de datecito y novedades. Sin spam.', 'One email a month with tips, date ideas and news. No spam.')}</p>
-        {done ? (
-          <div className="notice green">{t('¡Gracias! Revisa tu correo para confirmar tu suscripción.', 'Thanks! Check your inbox to confirm your subscription.')}</div>
+        <p className="lead">{t('Un correo al mes con consejos, ideas de datecito y novedades de la app. Sin spam; te das de baja con un clic.', 'One email a month with tips, date ideas and app news. No spam; unsubscribe in one click.')}</p>
+        {form.sent ? (
+          <div className="notice green">{t('¡Gracias! Ya estás en la lista. Te escribiremos una vez al mes.', 'Thanks! You’re on the list. We’ll write once a month.')}</div>
         ) : (
-          <form
-            className="btn-row"
-            style={{ justifyContent: 'center' }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              setDone(true);
-            }}
-          >
-            <input className="input" type="email" required placeholder={t('tu@correo.com', 'you@email.com')} style={{ maxWidth: 340 }} aria-label={t('Correo electrónico', 'Email')} />
-            <button className="btn btn-primary">{t('Suscribirme', 'Subscribe')}</button>
+          <form className="form" style={{ maxWidth: 420, margin: '0 auto' }} onSubmit={form.submit}>
+            <Honeypot />
+            <div className="btn-row" style={{ justifyContent: 'center' }}>
+              <input className="input" name="email" type="email" required placeholder={t('tu@correo.com', 'you@email.com')} style={{ maxWidth: 340 }} aria-label={t('Correo electrónico', 'Email')} autoComplete="email" />
+              <button className="btn btn-primary" disabled={form.sending}>
+                {form.sending ? t('Enviando…', 'Sending…') : t('Suscribirme', 'Subscribe')}
+              </button>
+            </div>
+            <label className="check" style={{ justifyContent: 'center', marginTop: 12 }}>
+              <input type="checkbox" name="accepted" required />
+              <span>
+                {t('Acepto el', 'I accept the')}{' '}
+                <Link className="link" to="/legal/privacidad">
+                  {t('Aviso de privacidad', 'Privacy Notice')}
+                </Link>
+                .
+              </span>
+            </label>
+            <FormError message={form.error} />
           </form>
         )}
-        <p className="small muted" style={{ marginTop: 12 }}>
-          {t('Al suscribirte aceptas el', 'By subscribing you accept the')}{' '}
-          <Link className="link" to="/legal/privacidad">
-            {t('Aviso de privacidad', 'Privacy Notice')}
-          </Link>
-          .
-        </p>
       </div>
     </section>
   );
@@ -114,18 +115,38 @@ function Newsletter() {
 export function BlogPost() {
   const { slug } = useParams();
   const t = useT();
-  const { toast } = useApp();
+  const lang = useLang();
   const { posts } = useContent();
   const post = posts.find((p) => p.slug === slug);
   if (!post) return <NotFound />;
   const more = posts.filter((p) => p.slug !== slug).slice(0, 3);
-  const share = () => {
-    navigator.clipboard?.writeText(window.location.href).catch(() => {});
-    toast(t('Enlace copiado.', 'Link copied.'));
-  };
+  const url = `${SITE_URL}/${lang}/blog/${post.slug}`;
+  const text = encodeURIComponent(post.title);
+  const shares: { icon: IconName; label: string; href: string }[] = [
+    { icon: 'whatsapp', label: 'WhatsApp', href: `https://wa.me/?text=${text}%20${encodeURIComponent(url)}` },
+    { icon: 'x-logo', label: 'X', href: `https://x.com/intent/post?text=${text}&url=${encodeURIComponent(url)}` },
+    { icon: 'facebook', label: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}` },
+  ];
   return (
     <>
-      <PageHero eyebrow={post.cat} title={post.title} lead={post.excerpt} crumbs={[{ label: 'Blog', to: '/blog' }, { label: post.cat }]}>
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        type="article"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            inLanguage: lang === 'en' ? 'en' : 'es-MX',
+            author: { '@type': 'Organization', name: 'Datecito' },
+            publisher: { '@type': 'Organization', name: 'Datecito', logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.png` } },
+            mainEntityOfPage: url,
+          },
+        ]}
+      />
+      <PageHero noSeo eyebrow={post.cat} title={post.title} lead={post.excerpt} crumbs={[{ label: 'Blog', to: '/blog' }, { label: post.cat }]}>
         <p className="small muted">
           {t('Por el equipo de Datecito', 'By the Datecito team')} · {post.date} · {post.read} {t('de lectura', 'read')}
         </p>
@@ -142,10 +163,10 @@ export function BlogPost() {
             <span className="muted small" style={{ alignSelf: 'center' }}>
               {t('Compartir:', 'Share:')}
             </span>
-            {(['whatsapp', 'x-logo', 'facebook'] as IconName[]).map((i) => (
-              <button key={i} className="btn btn-ghost btn-sm" aria-label={t(`Compartir en ${i}`, `Share on ${i}`)} onClick={share}>
-                <Icon name={i} size={18} />
-              </button>
+            {shares.map((s) => (
+              <a key={s.icon} className="btn btn-ghost btn-sm" aria-label={t(`Compartir en ${s.label}`, `Share on ${s.label}`)} href={s.href} target="_blank" rel="noreferrer">
+                <Icon name={s.icon} size={18} />
+              </a>
             ))}
           </div>
         </div>
@@ -180,22 +201,22 @@ export function Consejos() {
     {
       icon: 'camera',
       title: t('Tu perfil', 'Your profile'),
-      items: [t('Fotos recientes y con tu cara visible', 'Recent photos with your face visible'), t('Una foto haciendo algo que amas', 'A photo doing something you love'), t('Bio corta con un gancho para platicar', 'A short bio with a conversation hook'), t('Sé honest@ sobre lo que buscas', 'Be honest about what you’re looking for')],
+      items: [t('Fotos recientes y con tu cara visible', 'Recent photos with your face visible'), t('Una foto haciendo algo que amas', 'A photo doing something you love'), t('Bio corta con un gancho para platicar', 'A short bio with a conversation hook'), t('Di con honestidad lo que buscas', 'Be honest about what you’re looking for'), t('Verifica tu perfil: da confianza', 'Verify your profile: it builds trust')],
     },
     {
       icon: 'chat',
       title: t('El primer mensaje', 'The first message'),
-      items: [t('Comenta algo específico de su perfil', 'Mention something specific from their profile'), t('Pregunta algo fácil de responder', 'Ask something easy to answer'), t('Evita copiar y pegar el mismo mensaje', 'Avoid copy-pasting the same message'), t('Si no responde, no insistas', 'If they don’t reply, don’t push')],
+      items: [t('Comenta algo específico de su perfil o de lo que tienen en común', 'Mention something specific from their profile or what you share'), t('Pregunta algo fácil de responder', 'Ask something easy to answer'), t('Evita copiar y pegar el mismo mensaje', 'Avoid copy-pasting the same message'), t('Si no responde, no insistas', 'If they don’t reply, don’t push')],
     },
     {
       icon: 'coffee',
       title: t('El datecito', 'The date'),
-      items: [t('Propón algo corto y en un lugar público', 'Suggest something short in a public place'), t('Llega por tu cuenta', 'Get there on your own'), t('Escucha tanto como hablas', 'Listen as much as you talk'), t('Deja el celular guardado', 'Keep your phone away')],
+      items: [t('Propón algo corto y en un lugar público', 'Suggest something short in a public place'), t('Llega por tu cuenta y activa Datecito Seguro', 'Get there on your own and turn on Datecito Safe'), t('Escucha tanto como hablas', 'Listen as much as you talk'), t('Deja el celular guardado', 'Keep your phone away')],
     },
     {
       icon: 'heart',
       title: t('Después', 'After'),
-      items: [t('Si te gustó, dilo', 'If you liked them, say so'), t('Si no hubo química, dilo con amabilidad', 'If there was no chemistry, say so kindly'), t('Nada de ghosting después de verse', 'No ghosting after meeting'), t('Cuéntanos cómo te fue en el feedback', 'Tell us how it went in the feedback')],
+      items: [t('Si te gustó, dilo', 'If you liked them, say so'), t('Si no hubo química, dilo con amabilidad', 'If there was no chemistry, say so kindly'), t('Nada de ghosting después de verse', 'No ghosting after meeting'), t('Cuéntanos cómo te fue en “¿Cómo te fue?”', 'Tell us how it went in “How did it go?”')],
     },
   ];
   return (
@@ -258,27 +279,21 @@ export function Destinos() {
     <>
       <PageHero
         eyebrow={t('Destinos', 'Destinations')}
-        title={t('Ideas de datecito en tu ciudad', 'Date ideas in your city')}
-        lead={t('Datecito está creciendo. Descubre dónde estamos y qué planes te esperan.', 'Datecito is growing. See where we are and what plans await you.')}
+        title={t('Ideas de datecito por ciudad', 'Date ideas by city')}
+        lead={t('Planes para una primera cita en las ciudades de México que más nos gustan. Datecito empieza en el área metropolitana de la Ciudad de México y crecerá al resto del país.', 'First-date plans in the Mexican cities we love most. Datecito is starting in the Mexico City metro area and will grow to the rest of the country.')}
         crumbs={[{ label: t('Destinos', 'Destinations') }]}
       />
       <section className="section">
         <div className="container grid g3">
-          {cities.map((c) => {
-            const soon = SOON.test(c.blurb);
-            return (
-              <Link key={c.slug} to={`/destinos/${c.slug}`} className="card card-link">
-                <div className="tag-row">
-                  <span className={`pill${soon ? ' gray' : ' green'}`}>{soon ? t('Próximamente', 'Coming soon') : t('Disponible', 'Available')}</span>
-                </div>
-                <h3>{c.name}</h3>
-                <p className="muted small" style={{ marginBottom: 6 }}>
-                  {c.state}
-                </p>
-                <p className="muted">{c.blurb.replace(SOON, '')}</p>
-              </Link>
-            );
-          })}
+          {cities.map((c) => (
+            <Link key={c.slug} to={`/destinos/${c.slug}`} className="card card-link">
+              <h3>{c.name}</h3>
+              <p className="muted small" style={{ marginBottom: 6 }}>
+                {c.state}
+              </p>
+              <p className="muted">{c.blurb}</p>
+            </Link>
+          ))}
         </div>
       </section>
       <CtaBand />
@@ -294,7 +309,7 @@ export function Destino() {
   if (!c) return <NotFound />;
   return (
     <>
-      <PageHero eyebrow={c.state} title={t(`Datecito en ${c.name}`, `Datecito in ${c.name}`)} lead={c.blurb} crumbs={[{ label: t('Destinos', 'Destinations'), to: '/destinos' }, { label: c.name }]} />
+      <PageHero eyebrow={c.state} title={t(`Ideas de datecito en ${c.name}`, `Date ideas in ${c.name}`)} lead={c.blurb} crumbs={[{ label: t('Destinos', 'Destinations'), to: '/destinos' }, { label: c.name }]} />
       <section className="section">
         <div className="container narrow">
           <h2>{t('Ideas para tu datecito', 'Ideas for your date')}</h2>
@@ -318,44 +333,6 @@ export function Destino() {
         </div>
       </section>
       <CtaBand title={t(`Conoce gente en ${c.name}`, `Meet people in ${c.name}`)} />
-    </>
-  );
-}
-
-export function Historias() {
-  const t = useT();
-  const { stories } = useContent();
-  return (
-    <>
-      <PageHero
-        eyebrow={t('Historias de éxito', 'Success stories')}
-        title={t('Empezó con un datecito', 'It started with a date')}
-        lead={t('Historias ilustrativas inspiradas en nuestra comunidad beta. ¿Tienes la tuya? Cuéntanosla.', 'Illustrative stories inspired by our beta community. Have your own? Tell us.')}
-        crumbs={[{ label: t('Historias de éxito', 'Success stories') }]}
-      >
-        <div className="btn-row">
-          <a className="btn btn-primary" href="mailto:historias@datecito.com">
-            {t('Compartir mi historia', 'Share my story')}
-          </a>
-        </div>
-      </PageHero>
-      <section className="section">
-        <div className="container grid g3">
-          {stories.map((s) => (
-            <blockquote className="card quote" key={s.names} style={{ margin: 0 }}>
-              “{s.text}”
-              <footer>
-                <div className="avatar">{s.initials}</div>
-                <div>
-                  {s.names}
-                  <span>{s.city}</span>
-                </div>
-              </footer>
-            </blockquote>
-          ))}
-        </div>
-      </section>
-      <CtaBand />
     </>
   );
 }

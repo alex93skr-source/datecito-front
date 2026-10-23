@@ -36,7 +36,7 @@ subir() { # subir <carpeta local> <destino remoto> [excluir...]
 
 if [ "$WEB" = 1 ]; then
   paso "Compilando sitio web y CRM"
-  (cd "$ROOT/web" && npm run build >/dev/null)
+  (cd "$ROOT/web" && VITE_API_URL="https://api.$DOMAIN/api/v1" npm run build >/dev/null)
   (cd "$ROOT/crm" && VITE_API_URL="https://api.$DOMAIN/api/v1" npm run build >/dev/null)
   paso "Subiendo sitio web y CRM"
   "${SSH[@]}" "rm -rf $REMOTE/web.new $REMOTE/crm.new"

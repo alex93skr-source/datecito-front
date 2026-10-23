@@ -23,6 +23,8 @@ export function Sitemap() {
         { to: '/legal/privacidad-simplificado', label: t('Aviso de privacidad simplificado', 'Short Privacy Notice') },
         { to: '/legal/opciones-de-privacidad', label: t('Tus opciones de privacidad', 'Your privacy choices') },
         { to: '/legal/arco', label: t('Derechos ARCO', 'ARCO rights') },
+        { to: '/eliminar-cuenta', label: t('Eliminar mi cuenta', 'Delete my account') },
+        { to: '/seguridad/menores', label: t('Seguridad de menores', 'Child safety') },
       ],
     },
   ];
