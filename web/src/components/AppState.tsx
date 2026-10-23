@@ -3,7 +3,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 export type CookiePrefs = { necessary: true; analytics: boolean; marketing: boolean; personalization: boolean };
 
 type AppState = {
-  cookies: CookiePrefs | null;
+  /** undefined = todavía no sabemos (antes de montar); null = sin decisión guardada. */
+  cookies: CookiePrefs | null | undefined;
   saveCookies: (p: Omit<CookiePrefs, 'necessary'>) => void;
   cookieSettings: boolean;
   setCookieSettings: (v: boolean) => void;
@@ -25,7 +26,13 @@ function readPrefs(): CookiePrefs | null {
 }
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
-  const [cookies, setCookies] = useState<CookiePrefs | null>(readPrefs);
+  // Empieza igual que el HTML prerenderizado (sin preferencia) y lee el almacenamiento ya montado:
+  // así la hidratación coincide y el aviso sólo aparece si de verdad no hay decisión guardada.
+  const [cookies, setCookies] = useState<CookiePrefs | null | undefined>(undefined);
+  useEffect(() => {
+    // oxlint-disable-next-line react/set-state-in-effect -- sincroniza con localStorage, que no existe en el servidor
+    setCookies(readPrefs());
+  }, []);
   const [cookieSettings, setCookieSettings] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [message, setMessage] = useState<string | null>(null);

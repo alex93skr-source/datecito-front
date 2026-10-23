@@ -239,7 +239,8 @@ function Modal({ onClose, children, wide, label }: { onClose: () => void; childr
 function CookieBanner() {
   const { cookies, saveCookies, setCookieSettings } = useApp();
   const t = useT();
-  if (cookies) return null;
+  // Sin aviso mientras no sepamos si ya hay una decisión guardada (evita que parpadee o que aparezca de más).
+  if (cookies !== null) return null;
   return (
     <div className="cookie" role="region" aria-label={t('Aviso de cookies', 'Cookie notice')}>
       <p>
