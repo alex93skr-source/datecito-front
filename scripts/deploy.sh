@@ -43,7 +43,8 @@ if [ "$WEB" = 1 ]; then
   subir "$ROOT/web/dist" "$REMOTE/web.new"
   subir "$ROOT/crm/dist" "$REMOTE/crm.new"
   # Cambio atómico: nunca queda el sitio a medias.
-  "${SSH[@]}" "rm -rf $REMOTE/web.old $REMOTE/crm.old; [ -d $REMOTE/web ] && mv $REMOTE/web $REMOTE/web.old; [ -d $REMOTE/crm ] && mv $REMOTE/crm $REMOTE/crm.old; mv $REMOTE/web.new $REMOTE/web; mv $REMOTE/crm.new $REMOTE/crm; rm -rf $REMOTE/web.old $REMOTE/crm.old"
+  # Se reemplaza el contenido sin renombrar la carpeta: Caddy la tiene montada por inodo y un mv la dejaría apuntando a una carpeta borrada.
+  "${SSH[@]}" "mkdir -p $REMOTE/web $REMOTE/crm; find $REMOTE/web $REMOTE/crm -mindepth 1 -delete; cp -a $REMOTE/web.new/. $REMOTE/web/; cp -a $REMOTE/crm.new/. $REMOTE/crm/; rm -rf $REMOTE/web.new $REMOTE/crm.new"
 fi
 
 if [ "$API" = 1 ]; then
