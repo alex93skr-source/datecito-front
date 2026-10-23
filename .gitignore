@@ -39,3 +39,10 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Backend Laravel: repositorio aparte (datecito-back)
+/backend/
+
+# Local
+/tmp/
+/.claude/

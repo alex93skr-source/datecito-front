@@ -1,25 +1,70 @@
 {
   "expo": {
-    "name": "date",
-    "slug": "date",
+    "name": "Datecito",
+    "slug": "datecito",
+    "scheme": "datecito",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "backgroundColor": "#F9F3EC",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.datecito.app"
     },
     "android": {
+      "package": "com.datecito.app",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#FF6B6B",
         "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "blockedPermissions": [
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "./plugins/withBundledDebug.js",
+      "expo-font",
+      "expo-image",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F9F3EC",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 140
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Datecito usa tus fotos sólo para que elijas las de tu perfil.",
+          "cameraPermission": "Datecito usa la cámara para tu selfie de verificación y fotos de perfil."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Datecito usa tu ubicación aproximada para mostrarte personas cerca y para Aquí y ahora. Nunca mostramos tu ubicación exacta.",
+          "isAndroidBackgroundLocationEnabled": false,
+          "isIosBackgroundLocationEnabled": false
+        }
+      ]
+    ],
+    "extra": {
+      "router": {},
+      "apiUrl": "http://localhost:8000/api/v1",
+      "eas": {
+        "projectId": "258fd3c6-dcf2-4086-a093-c2df6cf3b916"
+      }
     }
   }
 }
