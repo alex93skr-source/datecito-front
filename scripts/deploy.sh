@@ -51,42 +51,9 @@ if [ "$API" = 1 ]; then
   subir "$ROOT/backend" "$REMOTE/backend" ./vendor ./node_modules ./.env ./.env.testing ./storage/logs ./storage/framework/cache ./storage/framework/sessions ./storage/framework/views ./.git ./tests ./.phpunit.cache
 
   paso "Configurando y arrancando en el servidor"
-  "${SSH[@]}" bash -s -- "$DOMAIN" "$ACME_EMAIL" <<'REMOTE_SCRIPT'
-set -euo pipefail
-DOMAIN="$1"; ACME_EMAIL="$2"
-cd /srv/datecito/backend
-mkdir -p storage/logs storage/framework/{cache/data,sessions,views} bootstrap/cache
-
-if [ ! -f .env ]; then
-  echo "Primera vez: creando .env con secretos aleatorios"
-  gen() { openssl rand -hex 24; }
-  awk -v d="$DOMAIN" -v e="$ACME_EMAIL" '
-    { while (index($0, "__GEN__")) { cmd = "openssl rand -hex 24"; cmd | getline s; close(cmd); sub("__GEN__", s) }
-      gsub("__DOMAIN__", d); gsub("__ACME_EMAIL__", e); print }' .env.production.example > .env
-  chmod 600 .env
-fi
-
-docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
-# Espera a que PHP esté listo
-for i in $(seq 1 30); do docker compose -f docker-compose.prod.yml exec -T app php -v >/dev/null 2>&1 && break; sleep 2; done
-
-ART="docker compose -f docker-compose.prod.yml exec -T app php artisan"
-docker compose -f docker-compose.prod.yml exec -T app composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --quiet
-grep -q '^APP_KEY=$' .env && $ART key:generate --force --no-interaction
-docker compose -f docker-compose.prod.yml exec -T app chown -R www-data:www-data storage bootstrap/cache
-$ART migrate --force --no-interaction
-$ART datecito:storage-setup --no-interaction || true
-$ART optimize --no-interaction
-$ART queue:restart --no-interaction
-docker compose -f docker-compose.prod.yml restart queue scheduler >/dev/null
-
-# Respaldo diario de la base de datos a las 3:30 (hora del servidor), 14 días de historial.
-install -m 755 /srv/datecito/backend/docker/backup.sh /usr/local/bin/datecito-backup
-( crontab -l 2>/dev/null | grep -v datecito-backup; echo "30 3 * * * /usr/local/bin/datecito-backup >> /var/log/datecito-backup.log 2>&1" ) | crontab -
-
-echo
-docker compose -f docker-compose.prod.yml ps --format '{{.Service}}: {{.Status}}'
-REMOTE_SCRIPT
+  # El script remoto va como archivo (subido con el backend): si se mandara por stdin,
+  # docker compose se lo comería y los pasos posteriores no correrían.
+  "${SSH[@]}" bash /srv/datecito/backend/docker/remote-deploy.sh "$DOMAIN" "$ACME_EMAIL"
 fi
 
 paso "Listo"
